@@ -1,10 +1,12 @@
-import { Button } from '@chakra-ui/react';
+import { Fragment } from "react";
+import Navbar from "./components/ui/Navbar";
+
 
 const App = () => {
   return (
-    <div>
-      <Button colorScheme='blue'>Button</Button>
-    </div>
+    <Fragment>
+      <Navbar />
+    </Fragment>
   );
 };
 
