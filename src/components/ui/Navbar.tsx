@@ -10,6 +10,7 @@ const Navbar = () => {
         <ContainerFluid>
             <TopNav />
             <MiddleNav />
+            <MainNav />
         </ContainerFluid>
     );
 };
@@ -79,7 +80,7 @@ const MiddleNav = () => {
                             </div>
                         </div>
                         <div className='flex-1 flex justify-center items-center '>
-                            <button className='bg-main border-main border text-white px-6 py-2.5 rounded-full hover:bg-transparent hover:text-main duration-300'>Donate Now</button>
+                            <button className='bg-main border-main border text-white px-6 py-2.5 rounded-full hover:bg-transparent font-semibold  hover:text-main duration-300'>Contribute Now</button>
                         </div>
                     </div>
                 </div>
@@ -87,5 +88,21 @@ const MiddleNav = () => {
         </Container>
     );
 };
+
+
+
+const MainNav = () => {
+
+    return (
+        <div className='py-6 bg-[#262F36] border-b-4 border-main '>
+            <ul className='max-w-screen-xl mx-auto flex justify-center gap-8 '>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>HOME</li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>Relief Goods</li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>Login</li>
+            </ul>
+        </div>
+    );
+};
+
 
 export default Navbar;

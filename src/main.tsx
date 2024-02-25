@@ -6,13 +6,15 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './redux/store/index.ts';
+import { RouterProvider } from 'react-router-dom';
+import routes from './routes/index.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ChakraProvider>
-          <App />
+          <RouterProvider router={routes} fallbackElement={<div>s</div>} />
         </ChakraProvider>
       </PersistGate>
     </Provider>
