@@ -5,7 +5,12 @@ import Navbar from "./components/ui/Navbar";
 const App = () => {
   return (
     <Fragment>
-      <Navbar />
+      <nav className="px-3">
+        <Navbar />
+      </nav>
+      <main>
+
+      </main>
     </Fragment>
   );
 };
