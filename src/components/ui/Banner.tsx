@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import banner from '../../assets/istockphoto-1333961968-612x612.jpg';
 
 const Banner = () => {
     return (
-        <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+        <section style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(${banner})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2  items-center gap-8 ">
             <div>
-                <span className="block mb-4 text-xs md:text-sm text-main font-medium">
+                <span className="block mb-4 text-xs md:text-sm text-main font-bold">
                     Making a Difference
                 </span>
-                <h3 className="text-3xl md:text-5xl font-semibold">
+                <h3 className="text-3xl md:text-5xl text-white font-semibold">
                     Support Our Cause through Charitable Giving
                 </h3>
-                <p className="text-base md:text-lg text-slate-700 my-4 md:my-6">
+                <p className="text-base md:text-lg text-white my-4 md:my-6">
                     Welcome to AidPulse, where we believe in the power of generosity to transform lives and communities. Through our charitable initiatives, we strive to address pressing social issues, promote education, support healthcare, and uplift underserved populations. Join us in our mission to make a meaningful difference in the world through your charitable contributions.
                 </p>
                 <button className="bg-main text-white font-medium py-2 px-4 rounded transition-all hover:bg-opacity-35 active:scale-95">
@@ -23,7 +24,7 @@ const Banner = () => {
     );
 };
 
-const shuffle = (array) => {
+const shuffle = (array: typeof squareData) => {
     let currentIndex = array.length,
         randomIndex;
 
@@ -63,7 +64,7 @@ const squareData = [
     },
     {
         id: 6,
-        src: "https://images.unsplash.com/photo-1619714193165-495007bc6b63?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNoYXJpdHl8ZW58MHx8MHx8fDA%3D",
+        src: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2hhcml0eXxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
         id: 7,
@@ -123,7 +124,7 @@ const generateSquares = () => {
 };
 
 const ShuffleGrid = () => {
-    const timeoutRef = useRef(null);
+    const timeoutRef = useRef<number | undefined>(undefined);
     const [squares, setSquares] = useState(generateSquares());
 
     useEffect(() => {

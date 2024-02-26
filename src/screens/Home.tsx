@@ -1,14 +1,14 @@
 import React from 'react';
 import Banner from '../components/ui/Banner';
 import LowerBanner from '../components/ui/LowerBanner';
-import Container from '../components/reusable/Container';
+import ContainerFluid from '../components/reusable/ContainerFluid';
 
 const Home = () => {
     return (
-        <Container>
+        <ContainerFluid>
             <Banner />
             <LowerBanner />
-        </Container>
+        </ContainerFluid>
     );
 };
 
