@@ -6,6 +6,7 @@ import TopRelief from '../components/ui/TopRelief';
 import Testimonial from '../components/ui/Testimonial';
 import Gallery from '../components/ui/Gallery';
 import Missions from '../components/ui/Missions';
+import Footer from '../components/ui/Footer';
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
             <Testimonial />
             <Gallery />
             <Missions />
+            <Footer />
         </ContainerFluid>
     );
 };

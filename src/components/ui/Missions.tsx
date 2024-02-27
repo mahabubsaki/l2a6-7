@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaHandsHelping } from 'react-icons/fa';
 import { GiEternalLove } from 'react-icons/gi';
 import { GoGraph } from 'react-icons/go';
