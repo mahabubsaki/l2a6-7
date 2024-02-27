@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { FaHandsHelping } from 'react-icons/fa';
 import { GiEternalLove } from 'react-icons/gi';
 import { GoGraph } from 'react-icons/go';
@@ -23,19 +24,29 @@ const missionData = [
 const Missions = () => {
     return (
         <div className='py-20'>
-            <h1 className='text-center text-4xl font-semibold'> About Us</h1>
-            <p className='text-center text-lg text-gray-500 mt-4'>We are a non-profit charity organization that aims to help the needy and the poor</p>
+            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'> About Us</motion.h1>
+            <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>We are a non-profit charity organization that aims to help the needy and the poor</motion.p>
             <div className='flex justify-center mt-2 mb-16'>
                 <span className='size-5 rounded-full deco relative border-2 flex justify-center items-center border-[#E6E6E6] '>
                     <span className='inline-block size-2 rounded-full bg-[#EAEAEA]' />
                 </span>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 max-w-screen-xl mx-auto gap-7'>
+            <motion.div viewport={{ once: true }} variants={{
+                notInView: {
+                    opacity: 0, y: 50
+                },
+                inView: {
+                    opacity: 1, y: 0,
+                    transition: {
+                        staggerChildren: 0.3
+                    }
+                }
+            }} initial='notInView' whileInView='inView' className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 max-w-screen-xl mx-auto gap-7'>
                 {missionData.map((item, index) => (
                     <Item {...item} key={index} />
                 ))}
 
-            </div>
+            </motion.div>
         </div>
     );
 
@@ -44,7 +55,14 @@ const Missions = () => {
 
 const Item = ({ icon, title, description }: { icon: JSX.Element, title: string, description: string; }) => {
     return (
-        <div className='flex  gap-7 max-w-[370px] mx-auto  bg-white p-8 shadow-xl group'>
+        <motion.div viewport={{ once: true }} variants={{
+            notInView: {
+                opacity: 0, y: 50
+            },
+            inView: {
+                opacity: 1, y: 0,
+            }
+        }} className='flex  gap-7 max-w-[370px] mx-auto  bg-white p-8 shadow-xl group'>
             <div>
                 <div className='bg-main p-5 relative z-10 border-2 group-hover:bg-white duration-300  border-main'>
                     <div className='group-hover:text-main text-white'>
@@ -57,7 +75,7 @@ const Item = ({ icon, title, description }: { icon: JSX.Element, title: string, 
                 <h1 className='text-xl font-semibold'>{title}</h1>
                 <p className=' text-[#9c9c9c] text-sm'>{description}</p>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

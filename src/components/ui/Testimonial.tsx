@@ -15,6 +15,7 @@ import testimonial4 from '../../assets/testimonial4.jpg';
 import testimonial5 from '../../assets/testimonial5.jpg';
 import Container from '../reusable/Container';
 import { FaQuoteRight } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const RESPONSIVE_SETTINGS = [
 
@@ -82,11 +83,12 @@ const Testimonial = () => {
             </div>
         )
     };
+
     return (
         <div style={{ backgroundImage: `url(${parallex})` }} className='min-h-[750px] relative parallex-section bg-no-repeat bg-cover bg-fixed py-20'>
             <div className='relative z-10 px-3 lg:px-0'>
-                <h1 className='text-center text-4xl font-semibold'>Testimonials</h1>
-                <p className='text-center text-lg text-gray-500 mt-4'>These are feedbacks from our customer honest user experiance</p>
+                <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Testimonials</motion.h1>
+                <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>These are feedbacks from our customer honest user experiance</motion.p>
                 <div className='flex justify-center mt-2 mb-10'>
                     <span className='size-5 rounded-full deco-main relative border-2 flex justify-center items-center border-main '>
                         <span className='inline-block size-2 rounded-full bg-main' />

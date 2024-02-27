@@ -1,4 +1,6 @@
+import { animate, motion, stagger, useInView } from 'framer-motion';
 import ReliefItem from '../reusable/ReliefItem';
+import { useEffect, useRef } from 'react';
 
 
 const reliefData = [
@@ -64,11 +66,27 @@ const reliefData = [
     },
 ];
 
+
 const TopRelief = () => {
+
+
+    const ref = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(ref, {
+        amount: 0.1
+    });
+    useEffect(() => {
+
+        if (isInView) {
+            (async function () {
+                await animate("#top-relief img", { scale: [0, 1] }, { type: "spring", delay: stagger(0.4), });
+
+            })();
+        }
+    }, [isInView]);
     return (
-        <div className='my-20'>
-            <h1 className='text-center text-4xl font-semibold'>Top Relief Goods</h1>
-            <p className='text-center text-lg text-gray-500 mt-4'>We are providing these relief goods to the people who are in need</p>
+        <div id='top-relief' ref={ref} className='my-20'>
+            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Top Relief Goods</motion.h1>
+            <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>We are providing these relief goods to the people who are in need</motion.p>
             <div className='flex justify-center mt-2 mb-16'>
                 <span className='size-5 rounded-full deco relative border-2 flex justify-center items-center border-[#E6E6E6] '>
                     <span className='inline-block size-2 rounded-full bg-[#EAEAEA]' />

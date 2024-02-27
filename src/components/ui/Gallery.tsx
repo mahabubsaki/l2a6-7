@@ -11,20 +11,35 @@ import photos from "../../utils/galleryPhotos";
 
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, stagger, useInView } from "framer-motion";
 
 const Gallery = () => {
+
     const [index, setIndex] = useState(-1);
+    const ref = useRef<HTMLDivElement | null>(null);
+    const isInView = useInView(ref, {
+        amount: 0.1
+    });
+    useEffect(() => {
+
+        if (isInView) {
+            (async function () {
+                await animate("#gallery img", { scale: [0, 1] }, { type: "spring", delay: stagger(0.4), });
+
+            })();
+        }
+    }, [isInView]);
     return (
         <div className="py-20">
-            <h1 className='text-center text-4xl font-semibold'>Our Gallery</h1>
-            <p className='text-center text-lg text-gray-500 mt-4'>These are the images of our charity events and activities</p>
+            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Our Gallery</motion.h1>
+            <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>These are the images of our charity events and activities</motion.p>
             <div className='flex justify-center mt-2 mb-16'>
                 <span className='size-5 rounded-full deco relative border-2 flex justify-center items-center border-[#E6E6E6] '>
                     <span className='inline-block size-2 rounded-full bg-[#EAEAEA]' />
                 </span>
             </div>
-            <div className="px-5" >
+            <div className="px-5" id="gallery" ref={ref}>
                 <PhotoAlbum photos={photos} layout="masonry" targetRowHeight={150} onClick={({ index }) => setIndex(index)} breakpoints={[300, 600, 1200]} />
 
                 <Lightbox
