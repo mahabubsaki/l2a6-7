@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useInsertOneMutation, useUpdateOneMutation } from '../../redux/features/goods/goodsAPI';
 import { toast } from 'sonner';
 
-const PostOrPutGoods = ({ method, defaultValus }: { method: 'PUT' | 'POST', defaultValus: { src: string, title: string, collected: string | number, category: string, goal: string | number, description: string, donaters: string | number; } | null; }) => {
+const PostOrPutGoods = ({ method, defaultValus, id, onClose, refetch }: { method: 'PUT' | 'POST', defaultValus: { src: string, title: string, collected: string | number, category: string, goal: string | number, description: string, donaters: string | number; } | null; id?: string; onClose?: () => void; refetch?: () => void; }) => {
     const [data, setData] = useState(defaultValus ? defaultValus : { src: '', category: '', collected: '', description: '', donaters: '', goal: '', title: '' });
-    const { id } = useParams();
     const [insertOne] = useInsertOneMutation();
     const [updateOne] = useUpdateOneMutation();
     const navigate = useNavigate();
@@ -28,7 +27,7 @@ const PostOrPutGoods = ({ method, defaultValus }: { method: 'PUT' | 'POST', defa
 
                 const result = await insertOne(data);
                 if ((result as { error: { data: { message: string; }; }; }).error) {
-                    toast.error((result as { error: { data: { message: string; }; }; }).error.data.message, { id: tid });
+                    toast.error('Unkown Error Occured', { id: tid });
                     return;
                 }
                 toast.success('Created Relief Post', { id: tid });
@@ -37,11 +36,12 @@ const PostOrPutGoods = ({ method, defaultValus }: { method: 'PUT' | 'POST', defa
                 const tid = toast.loading('Updating relief post...');
                 const result = await updateOne({ ...data, _id: id });
                 if ((result as { error: { data: { message: string; }; }; }).error) {
-                    toast.error((result as { error: { data: { message: string; }; }; }).error.data.message, { id: tid });
+                    toast.error('Unkown Error Occured', { id: tid });
                     return;
                 }
-                toast.success('Update Relief Post', { id: tid });
-                navigate('/dashboard/supplies');
+                toast.success('Updated Relief Post', { id: tid });
+                refetch && refetch();
+                onClose && onClose();
             }
         }}>
 

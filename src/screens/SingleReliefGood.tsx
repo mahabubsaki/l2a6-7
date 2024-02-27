@@ -15,8 +15,9 @@ const SingleReliefGood = () => {
     if (isLoading) {
         return <div className='min-h-screen flex justify-center items-center text-3xl font-bold'>Loading...</div>;
     }
+    console.log(error);
     if (isError) {
-        return <div className='min-h-screen flex justify-center items-center text-3xl font-bold'>{(error as { data: { message: string; }; }).data.message}</div>;
+        return <div className='min-h-screen flex justify-center items-center text-3xl font-bold'>{(error as { data: { message: string; }; }).data?.message || 'Unknown Error'}</div>;
     }
 
     return (

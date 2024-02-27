@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const TopRelief = () => {
 
-    const { data, isLoading } = useGetTopQuery([]);
+    const { data, isLoading, isError } = useGetTopQuery([]);
 
 
     const ref = useRef<HTMLDivElement | null>(null);
@@ -25,7 +25,11 @@ const TopRelief = () => {
             })();
         }
     }, [isInView]);
-
+    if (isError) {
+        return <div className='text-center text-red-600 text-2xl my-5'>
+            Can't load top relief posts
+        </div>;
+    }
     return (
         <div id='top-relief' ref={ref} className='my-20'>
             <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Top Relief Goods</motion.h1>

@@ -22,12 +22,14 @@ const goodsApi = baseApi.injectEndpoints({
             })
         }),
         updateOne: builder.mutation({
-            query: ({ _id, ...data }) => ({
-                url: '/api/v1/update-supply',
-                params: _id,
-                body: data,
-                method: 'PUT'
-            })
+            query: ({ _id, ...data }) => {
+                console.log(data, _id);
+                return {
+                    url: `/api/v1/update-supply/${_id}`,
+                    body: data,
+                    method: 'PUT'
+                };
+            }
         }),
         getTop: builder.query({
             query: () => ({
