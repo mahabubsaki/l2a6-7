@@ -34,6 +34,15 @@ const Gallery = () => {
                     close={() => setIndex(-1)}
                     plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]} />
             </div>
+            <div className="bg-[#eb5310] px-5 text-center xl:text-left py-[55px] mt-5 flex items-center flex-col xl:flex-row justify-center gap-20">
+                <div className="flex flex-col text-white gap-5 ">
+                    <h2 className="text-3xl">Inspiring Moments of Generosity </h2>
+                    <p className="text-xl opacity-80">Within our gallery, you'll find a collection of heartwarming moments showcasing the incredible impact of generosity.</p>
+                </div>
+                <div>
+                    <button className='bg-white w-fit text-[12px] border-white border text-main  px-6 py-2.5 rounded-full text-lg hover:bg-transparent font-semibold  hover:text-white duration-300'>View Full Gallery</button>
+                </div>
+            </div>
         </div>
     );
 };
