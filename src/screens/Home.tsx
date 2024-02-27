@@ -7,6 +7,7 @@ import Testimonial from '../components/ui/Testimonial';
 import Gallery from '../components/ui/Gallery';
 import Missions from '../components/ui/Missions';
 import Footer from '../components/ui/Footer';
+import Counter from '../components/ui/Counter';
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
             <Testimonial />
             <Gallery />
             <Missions />
+            <Counter />
             <Footer />
         </ContainerFluid>
     );
