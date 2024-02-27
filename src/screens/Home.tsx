@@ -8,7 +8,6 @@ import Gallery from '../components/ui/Gallery';
 import Missions from '../components/ui/Missions';
 import Counter from '../components/ui/Counter';
 import FAQ from '../components/ui/FAQ';
-//@ts-expect-error - its a third party library
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { useEffect } from 'react';
 import { animate, stagger } from 'framer-motion';

@@ -18,7 +18,7 @@ const Supplies = () => {
     };
     return (
         <div>
-            <h1 className='text-center text-3xl mb-4'>All Supplies : {data.length}</h1>
+            <h1 className='text-center text-3xl mb-4'>All Supplies : {data?.length ?? 0}</h1>
             <div className='w-[95%] mx-auto'>
                 {isLoading ? <h1>Loading...</h1> : <TableContainer>
                     <Table variant='simple'>

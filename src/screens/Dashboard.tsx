@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
 
@@ -20,6 +19,11 @@ const Dashboard = () => {
                             'bg-main text-white': pathname === '/dashboard/create-supply',
                             'bg-white text-main': pathname !== '/dashboard/create-supply',
                         })}>Create Supply</li></Link>
+                    <Link to={'/'}>
+                        <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer  rounded-full', {
+                            'bg-main text-white': pathname === '/',
+                            'bg-white text-main': pathname !== '/',
+                        })}>Home</li></Link>
 
                 </ul>
             </div >
