@@ -4,6 +4,7 @@ import Home from "../screens/Home";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import AllReliefGoods from "../screens/AllReliefGoods";
+import SingleReliefGood from "../screens/SingleReliefGood";
 
 const routes = createBrowserRouter([{
     path: '/',
@@ -24,6 +25,10 @@ const routes = createBrowserRouter([{
         {
             path: '/relief-goods',
             element: <AllReliefGoods />
+        },
+        {
+            path: '/relief/:id',
+            element: <SingleReliefGood />
         }
     ]
 }]);

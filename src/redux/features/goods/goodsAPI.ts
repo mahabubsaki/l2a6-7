@@ -14,7 +14,13 @@ const goodsApi = baseApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        getSingle: builder.query({
+            query: (id) => ({
+                url: `/api/v1/relief-goods/${id}`,
+                method: 'GET',
+            }),
+        }),
     }),
 });
 
-export const { useGetALLQuery, useGetTopQuery } = goodsApi;
+export const { useGetALLQuery, useGetTopQuery, useGetSingleQuery } = goodsApi;

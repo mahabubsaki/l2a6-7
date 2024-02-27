@@ -36,7 +36,7 @@ const TopRelief = () => {
                 </span>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 max-w-screen-xl mx-auto gap-7'>
-                {!isLoading && data.map((item: { goal: number, collected: number, title: string, donaters: number, description: string; src: string; category: string; }, index: number) => (
+                {!isLoading && data.map((item: { goal: number, collected: number, title: string, donaters: number, description: string; src: string; category: string; _id: string; }, index: number) => (
                     <ReliefItem {...item} key={index} />
                 ))}
             </div>

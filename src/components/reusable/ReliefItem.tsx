@@ -2,8 +2,9 @@
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { HiHeart } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
-const ReliefItem = ({ goal, collected, title, donaters, description, src, category }: { goal: number, collected: number, title: string, donaters: number, description: string; src: string; category: string; }) => {
+const ReliefItem = ({ goal, collected, title, donaters, description, src, category, _id }: { goal: number, collected: number, title: string, donaters: number, description: string; src: string; category: string; _id: string; }) => {
     return (
         <div className='border-4 border-[#eee]'>
             <figure className='aspect-video relative'>
@@ -30,7 +31,8 @@ const ReliefItem = ({ goal, collected, title, donaters, description, src, catego
                 </div>
                 <p className='text-[12px] text-[#9c9c9c]'>{description}</p>
                 <div className='flex gap-6 flex-wrap'>
-                    <button className='bg-main w-fit text-[12px] border-main border text-white px-6 py-2.5 rounded-full hover:bg-transparent font-semibold  hover:text-main duration-300'>Details</button>
+                    <Link to={'/relief/' + _id}>
+                        <button className='bg-main w-fit text-[12px] border-main border text-white px-6 py-2.5 rounded-full hover:bg-transparent font-semibold  hover:text-main duration-300'>Details</button></Link>
                     <button className='w-fit text-[12px] border-main border hover:text-white px-6 py-2.5 rounded-full flex items-center gap-1 hover:bg-main bg-white font-semibold  text-main duration-300'><HiHeart />{donaters} Donaters</button>
                 </div>
             </div>
