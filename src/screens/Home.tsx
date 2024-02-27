@@ -4,6 +4,7 @@ import LowerBanner from '../components/ui/LowerBanner';
 import ContainerFluid from '../components/reusable/ContainerFluid';
 import TopRelief from '../components/ui/TopRelief';
 import Testimonial from '../components/ui/Testimonial';
+import Gallery from '../components/ui/Gallery';
 
 const Home = () => {
     return (
@@ -14,9 +15,7 @@ const Home = () => {
                 <TopRelief />
             </div>
             <Testimonial />
-            <div className='h-[12000px]'>
-
-            </div>
+            <Gallery />
         </ContainerFluid>
     );
 };
