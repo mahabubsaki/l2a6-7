@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Toaster } from 'sonner';
 
 const Dashboard = () => {
     const { pathname } = useLocation();
     return (
         <div className='grid grid-cols-12'>
-            <div className='md:col-span-2 col-span-12 p-5 h-[100dvh] bg-slate-100'>
+            <div className='md:col-span-2 col-span-12 p-5 min-h-[100dvh] bg-slate-100'>
                 <h1 className='text-center text-2xl'>Dashboard</h1>
                 <ul>
                     <Link to={'/dashboard/supplies'}>
@@ -22,8 +23,9 @@ const Dashboard = () => {
 
                 </ul>
             </div >
-            <div className='md:col-span-10 col-span-12'>
+            <div className='md:col-span-10 col-span-12 mt-10'>
                 <Outlet />
+                <Toaster duration={1000} richColors position="top-center" visibleToasts={1} />
             </div>
         </div>
     );

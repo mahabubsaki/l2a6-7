@@ -8,6 +8,12 @@ const goodsApi = baseApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        deleteOne: builder.mutation({
+            query: (id) => ({
+                url: `/api/v1/relief-goods/${id}`,
+                method: 'DELETE',
+            }),
+        }),
         getTop: builder.query({
             query: () => ({
                 url: '/api/v1/relief-goods-top',
@@ -23,4 +29,4 @@ const goodsApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useGetALLQuery, useGetTopQuery, useGetSingleQuery } = goodsApi;
+export const { useGetALLQuery, useGetTopQuery, useGetSingleQuery, useDeleteOneMutation } = goodsApi;
