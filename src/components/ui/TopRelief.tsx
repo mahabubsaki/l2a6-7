@@ -72,7 +72,8 @@ const TopRelief = () => {
 
     const ref = useRef<HTMLDivElement | null>(null);
     const isInView = useInView(ref, {
-        amount: 0.1
+        amount: 0.1,
+        once: true
     });
     useEffect(() => {
 

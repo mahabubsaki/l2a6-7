@@ -4,6 +4,7 @@ import ContainerFluid from '../reusable/ContainerFluid';
 import { FaFacebookF, FaTwitter, FaGooglePlus, FaLinkedinIn, FaDribbble } from "react-icons/fa";
 import img from '../../assets/logo.png';
 import { MdOutlineAddLocationAlt, MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -98,7 +99,8 @@ const MainNav = () => {
             <ul className='max-w-screen-xl mx-auto flex justify-center gap-8 uppercase'>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>HOME</li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>Relief Goods</li>
-                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>Login</li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/auth/login'}>
+                    Login</Link></li>
             </ul>
         </div>
     );

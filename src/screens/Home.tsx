@@ -9,6 +9,7 @@ import Missions from '../components/ui/Missions';
 import Footer from '../components/ui/Footer';
 import Counter from '../components/ui/Counter';
 import FAQ from '../components/ui/FAQ';
+//@ts-expect-error - its a third party library
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { useEffect } from 'react';
 import { animate, stagger } from 'framer-motion';
@@ -17,7 +18,7 @@ const Home = () => {
     useEffect(() => {
 
         (async function () {
-            await animate("#shuffle div", { scale: [0, 1] }, { type: "spring", delay: stagger(0.4), });
+            await animate("#shuffle div", { scale: [0, 1] }, { type: "spring", delay: stagger(0.4) });
 
         })();
     }, []);

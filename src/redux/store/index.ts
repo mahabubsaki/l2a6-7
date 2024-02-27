@@ -3,6 +3,7 @@ import demoSlice from '../features/demo/demoSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import { baseApi } from '../api/baseAPI';
+import authSlice from '../features/auth/authSlice';
 
 
 const persistConfig = {
@@ -11,11 +12,13 @@ const persistConfig = {
 };
 
 const persistedDemoSlice = persistReducer(persistConfig, demoSlice);
+const persistedAuthSlice = persistReducer(persistConfig, authSlice);
 
 export const store = configureStore({
     reducer: {
         demo: persistedDemoSlice,
         [baseApi.reducerPath]: baseApi.reducer,
+        auth: persistedAuthSlice
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

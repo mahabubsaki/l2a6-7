@@ -19,13 +19,14 @@ const Gallery = () => {
     const [index, setIndex] = useState(-1);
     const ref = useRef<HTMLDivElement | null>(null);
     const isInView = useInView(ref, {
-        amount: 0.1
+        amount: 0.1,
+        once: true
     });
     useEffect(() => {
 
         if (isInView) {
             (async function () {
-                await animate("#gallery img", { scale: [0, 1] }, { type: "spring", delay: stagger(0.4), });
+                await animate("#gallery img", { scale: [0, 1] }, { type: "spring", delay: stagger(0.2), });
 
             })();
         }
