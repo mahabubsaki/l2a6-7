@@ -97,7 +97,7 @@ const MainNav = () => {
     return (
         <div className='py-6 bg-[#262F36] border-b-4 border-main '>
             <ul className='max-w-screen-xl mx-auto flex justify-center gap-8 uppercase'>
-                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>HOME</li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/'}>HOME</Link></li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>Relief Goods</li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/auth/login'}>
                     Login</Link></li>
