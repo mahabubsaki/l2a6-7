@@ -3,6 +3,7 @@ import App from "../App";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
+import AllReliefGoods from "../screens/AllReliefGoods";
 
 const routes = createBrowserRouter([{
     path: '/',
@@ -13,12 +14,16 @@ const routes = createBrowserRouter([{
             element: <Home />
         },
         {
-            path: '/auth/login',
+            path: '/login',
             element: <Login />
         },
         {
-            path: '/auth/register',
+            path: '/register',
             element: <Register />
+        },
+        {
+            path: '/relief-goods',
+            element: <AllReliefGoods />
         }
     ]
 }]);

@@ -6,7 +6,6 @@ import TopRelief from '../components/ui/TopRelief';
 import Testimonial from '../components/ui/Testimonial';
 import Gallery from '../components/ui/Gallery';
 import Missions from '../components/ui/Missions';
-import Footer from '../components/ui/Footer';
 import Counter from '../components/ui/Counter';
 import FAQ from '../components/ui/FAQ';
 //@ts-expect-error - its a third party library
@@ -36,7 +35,7 @@ const Home = () => {
                 <Missions />
                 <Counter />
                 <FAQ />
-                <Footer />
+
             </ContainerFluid>
         </ReactLenis>
     );

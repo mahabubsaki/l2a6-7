@@ -1,33 +1,13 @@
-import { animate, motion, stagger, useInView } from 'framer-motion';
-import ReliefItem from '../reusable/ReliefItem';
-import { useEffect, useRef } from 'react';
-import { useGetTopQuery } from '../../redux/features/goods/goodsAPI';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import React from 'react';
+import { useGetALLQuery } from '../redux/features/goods/goodsAPI';
+import ReliefItem from '../components/reusable/ReliefItem';
 
-
-
-const TopRelief = () => {
-
-    const { data, isLoading } = useGetTopQuery([]);
-
-
-    const ref = useRef<HTMLDivElement | null>(null);
-    const isInView = useInView(ref, {
-        amount: 0.1,
-        once: true
-    });
-    useEffect(() => {
-
-        if (isInView) {
-            (async function () {
-                await animate("#top-relief img", { scale: [0, 1] }, { type: "spring", delay: stagger(0.4), });
-
-            })();
-        }
-    }, [isInView]);
-
+const AllReliefGoods = () => {
+    const { data, isLoading } = useGetALLQuery([]);
+    console.log(data);
     return (
-        <div id='top-relief' ref={ref} className='my-20'>
+        <div>
             <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Top Relief Goods</motion.h1>
             <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>We are providing these relief goods to the people who are in need</motion.p>
             <div className='flex justify-center mt-2 mb-16'>
@@ -40,13 +20,8 @@ const TopRelief = () => {
                     <ReliefItem {...item} key={index} />
                 ))}
             </div>
-            <div>
-                <Link to={'/relief-goods'}>
-                    <button className='bg-main text-white font-semibold px-6 py-2.5 rounded-full hover:bg-transparent border-main border hover:text-main duration-300 mt-16 mx-auto block'>View All</button>
-                </Link>
-            </div>
         </div>
     );
 };
 
-export default TopRelief;
+export default AllReliefGoods;

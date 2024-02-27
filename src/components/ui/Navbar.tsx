@@ -5,6 +5,9 @@ import { FaFacebookF, FaTwitter, FaGooglePlus, FaLinkedinIn, FaDribbble } from "
 import img from '../../assets/logo.png';
 import { MdOutlineAddLocationAlt, MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/store/hooks';
+import { selectCurrentUser, setUser } from '../../redux/features/auth/authSlice';
+import { toast } from 'sonner';
 
 const Navbar = () => {
     return (
@@ -93,14 +96,21 @@ const MiddleNav = () => {
 
 
 const MainNav = () => {
-
+    const user = useAppSelector(selectCurrentUser);
+    const dispatch = useAppDispatch();
     return (
         <div className='py-6 bg-[#262F36] border-b-4 border-main '>
-            <ul className='max-w-screen-xl mx-auto flex justify-center gap-8 uppercase'>
+            <ul className='max-w-screen-xl mx-auto flex items-center flex-col sm:flex-row justify-center gap-8 uppercase'>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/'}>HOME</Link></li>
-                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'>Relief Goods</li>
-                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/auth/login'}>
-                    Login</Link></li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/relief-goods'}>Relief Goods</Link></li>
+                {user ? <>     <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/dashboard'}>
+                    Dashboard</Link></li>
+                    <button onClick={() => {
+                        dispatch(setUser({ user: null, token: '' }));
+                        toast.success('Logout Success');
+                    }} className='bg-main border-main border text-white px-6 py-2.5 rounded-full hover:bg-transparent font-semibold  hover:text-main duration-300'>Logout</button>
+                </> : <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/login'}>
+                    Login</Link></li>}
             </ul>
         </div>
     );

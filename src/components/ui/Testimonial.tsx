@@ -98,7 +98,7 @@ const Testimonial = () => {
             <Container>
                 <Slider {...settings} autoplay dots={true} infinite={true} slidesToShow={3} responsive={RESPONSIVE_SETTINGS} easing='easeOut' afterChange={(current) => setActive(current)} adaptiveHeight centerPadding='0' initialSlide={0} pauseOnHover arrows={false}  >
                     {testimonials.map((testimonial, index) => (
-                        <div className='relative py-10'>
+                        <div className='relative py-10' key={index}>
                             <div className='size-14 bg-white shadow-xl left-1/2 right-1/2 -translate-x-1/2  rounded-full absolute top-3 text-main text-3xl flex justify-center items-center'>
                                 <FaQuoteRight />
                             </div>
