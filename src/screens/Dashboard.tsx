@@ -9,6 +9,11 @@ const Dashboard = () => {
             <div className='md:col-span-2 col-span-12 p-5 min-h-[100dvh] bg-slate-100'>
                 <h1 className='text-center text-2xl'>Dashboard</h1>
                 <ul>
+                    <Link to={'/dashboard'}>
+                        <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer rounded-full', {
+                            'bg-main text-white': pathname === '/dashboard',
+                            'bg-white text-main': pathname !== '/dashboard',
+                        })}>Statistics</li></Link>
                     <Link to={'/dashboard/supplies'}>
                         <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer rounded-full', {
                             'bg-main text-white': pathname === '/dashboard/supplies',

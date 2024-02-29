@@ -26,8 +26,8 @@ const ReliefItem = ({ goal, collected, title, donaters, description, src, catego
                 <h1 className='text-lg uppercase font-semibold'>{title}</h1>
                 <h2 className=' uppercase font-semibold'>Category : {category}</h2>
                 <div className='flex gap-2.5 text-[12px] font-semibold'>
-                    <p className='text-[#9c9c9c]'>Collected : {goal}</p>
-                    <p className='text-main'>Goal : {collected}</p>
+                    <p className='text-[#9c9c9c]'>Collected : {collected}</p>
+                    <p className='text-main'>Goal : {goal}</p>
                 </div>
                 <p className='text-[12px] text-[#9c9c9c]'>{description}</p>
                 <div className='flex gap-6 flex-wrap'>

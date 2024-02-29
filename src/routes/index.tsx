@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
@@ -9,6 +9,7 @@ import Dashboard from "../screens/Dashboard";
 import RequireAuth from "../components/reusable/RequireAuth";
 import Supplies from "../screens/Supplies";
 import CreateSupply from "../screens/CreateSupply";
+import Statistics from "../screens/Statistics";
 
 const routes = createBrowserRouter([{
     path: '/',
@@ -44,7 +45,7 @@ const routes = createBrowserRouter([{
     children: [
         {
             path: '/dashboard',
-            element: <Navigate to={'/dashboard/supplies'} />
+            element: <Statistics />
 
         },
         {
