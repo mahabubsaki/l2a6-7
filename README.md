@@ -15,7 +15,7 @@
 
 ## Live URL
 
-Visit the live HealthBridge platform: [HealthBridge](https://post-disaster-supply-chain.web.app/)
+Visit the live AidPulse platform: [AidPulse](https://aidpulse-frontend.vercel.app/)
 
 ## Overview
 
