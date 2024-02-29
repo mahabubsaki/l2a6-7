@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+
 import { useGetALLQuery } from '../redux/features/goods/goodsAPI';
 import ReliefItem from '../components/reusable/ReliefItem';
 

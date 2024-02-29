@@ -1,3 +1,4 @@
+import { Input } from '@chakra-ui/react';
 import classNames from 'classnames';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
@@ -29,6 +30,10 @@ const Dashboard = () => {
                             'bg-main text-white': pathname === '/',
                             'bg-white text-main': pathname !== '/',
                         })}>Home</li></Link>
+
+                    <li>
+                        <Input placeholder='Search...' />
+                    </li>
 
                 </ul>
             </div >

@@ -35,7 +35,7 @@ const routes = createBrowserRouter([{
         },
         {
             path: '/relief/:id',
-            element: <SingleReliefGood />,
+            element: <RequireAuth><SingleReliefGood /></RequireAuth>,
 
         },
 

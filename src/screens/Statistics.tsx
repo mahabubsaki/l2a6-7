@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useGetALLQuery } from '../redux/features/goods/goodsAPI';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { ReliefInterFace } from './SingleReliefGood';

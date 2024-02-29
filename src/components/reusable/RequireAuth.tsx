@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useAppSelector } from '../../redux/store/hooks';
 import { selectCurrentUser } from '../../redux/features/auth/authSlice';
 import { Navigate } from 'react-router-dom';
