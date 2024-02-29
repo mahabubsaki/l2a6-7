@@ -58,6 +58,12 @@ const testimonials = [
         position: 'Accountant',
         review: "I've been touched by the kindness and generosity of Hope for All Foundation. Their efforts to improve the lives of others are truly commendable. Every donation, every act of service, makes a significant difference.",
         img: testimonial5
+    },
+    {
+        name: 'Bob Smith',
+        position: 'Accountant',
+        review: "I've been touched by the kindness and generosity of Hope for All Foundation. Their efforts to improve the lives of others are truly commendable. Every donation, every act of service, makes a significant difference.",
+        img: testimonial5
     }
 ];
 
@@ -87,7 +93,7 @@ const Testimonial = () => {
     return (
         <div style={{ backgroundImage: `url(${parallex})` }} className='min-h-[750px] relative parallex-section bg-no-repeat bg-cover bg-fixed py-20'>
             <div className='relative z-10 px-3 lg:px-0'>
-                <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Testimonials</motion.h1>
+                <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Top Testimonials</motion.h1>
                 <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>These are feedbacks from our customer honest user experiance</motion.p>
                 <div className='flex justify-center mt-2 mb-10'>
                     <span className='size-5 rounded-full deco-main relative border-2 flex justify-center items-center border-main '>

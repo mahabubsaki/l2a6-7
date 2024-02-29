@@ -1,9 +1,10 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react';
+import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react';
 
 import { useDeleteOneMutation, useGetALLQuery } from '../redux/features/goods/goodsAPI';
 import { toast } from 'sonner';
 import { useState } from 'react';
 import PostOrPutGoods from '../components/reusable/PostOrPutGoods';
+import { Link } from 'react-router-dom';
 
 const Supplies = () => {
     const { data, isLoading, refetch, isError } = useGetALLQuery([]);
@@ -26,6 +27,11 @@ const Supplies = () => {
     return (
         <div>
             <h1 className='text-center text-3xl mb-4'>All Supplies : {data?.length ?? 0}</h1>
+            <div className='flex justify-end max-w-screen-xl'>
+                <Link to={'/dashboard/create-supply'}>
+                    <Button colorScheme='blue' onClick={onOpen}>Add New Supply</Button>
+                </Link>
+            </div>
             <div className='w-[95%] mx-auto'>
                 {isLoading ? <h1>Loading...</h1> : <TableContainer>
                     <Table variant='simple'>
@@ -53,7 +59,24 @@ const Supplies = () => {
                                             setEdited(supply);
                                             onOpen();
                                         }} className='bg-main text-white font-semibold px-6 py-2.5 rounded-full hover:bg-transparent border-main border hover:text-main duration-300'>Edit</button>
-                                        <button onClick={() => handleDelete(supply._id)} className='bg-white text-main font-semibold px-6 py-2.5 rounded-full hover:bg-main border-main border hover:text-white duration-300 ml-2'>Delete</button>
+
+
+                                        <Popover>
+                                            <PopoverTrigger>
+                                                <button className='bg-white text-main font-semibold px-6 py-2.5 rounded-full hover:bg-main border-main border hover:text-white duration-300 ml-2'>Delete</button>
+                                            </PopoverTrigger>
+                                            <PopoverContent>
+                                                <PopoverArrow />
+                                                <PopoverCloseButton />
+                                                <PopoverHeader>Confirmation!</PopoverHeader>
+                                                <p className='my-5 px-5'>Are you sure you want to delete this?</p>
+                                                <div className='px-5 flex justify-center mb-5'>
+                                                    <Button colorScheme='red' onClick={() => handleDelete(supply._id)}>
+                                                        Confirm Delete
+                                                    </Button>
+                                                </div>
+                                            </PopoverContent>
+                                        </Popover>
                                     </Td>
                                 </Tr>
                             ))}

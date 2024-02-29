@@ -10,10 +10,12 @@ import RequireAuth from "../components/reusable/RequireAuth";
 import Supplies from "../screens/Supplies";
 import CreateSupply from "../screens/CreateSupply";
 import Statistics from "../screens/Statistics";
+import Notfound from "../screens/404";
 
 const routes = createBrowserRouter([{
     path: '/',
     element: <App />,
+    errorElement: <Notfound />,
     children: [
         {
             path: "/",
