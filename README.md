@@ -1,6 +1,6 @@
 <!-- Please update value in the {}  -->
 
-# HealthBridge - Post-Disaster Community Health and Medical Supply Chain Platform
+# AidPulse - A Relief goods management
 
 <!-- TABLE OF CONTENTS -->
 
