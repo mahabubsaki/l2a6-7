@@ -16,7 +16,7 @@ const Counter = () => {
                         <button className='bg-white  w-fit text-[12px] border-white border text-main  px-6 py-2.5 rounded-full text-sm hover:bg-transparent font-semibold  hover:text-white duration-300'>BE A PART OF US</button>
                     </div>
                 </div>
-                <div className='flex-1 flex flex-wrap gap-16 justify-center text-white'>
+                <div className='flex-1 flex flex-wrap gap-20 justify-center text-white'>
                     <div className='flex flex-col items-center'>
                         <LiaAwardSolid size={120} className='mb-7' />
                         <p className='text-5xl mb-5 font-semibold'><CounterFM value={30} /></p>

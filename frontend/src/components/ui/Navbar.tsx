@@ -103,6 +103,7 @@ const MainNav = () => {
             <ul className='max-w-screen-xl mx-auto flex items-center flex-col sm:flex-row justify-center gap-8 uppercase'>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/'}>HOME</Link></li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/relief-goods'}>Relief Goods</Link></li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/community'}>Community</Link></li>
                 {user ? <>     <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/dashboard'}>
                     Dashboard</Link></li>
                     <button onClick={() => {
