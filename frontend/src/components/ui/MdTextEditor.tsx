@@ -3,10 +3,10 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 const MdTextEditor = () => {
     const [value, setValue] = useState('');
-    const ref = useRef(null);
+    const ref = useRef<ReactQuill>(null);
     useLayoutEffect(() => {
         if (ref.current) {
-            console.log(ref.current.value);
+            console.log((ref.current as ReactQuill).value);
         }
     }, [ref, value]);
     return (
