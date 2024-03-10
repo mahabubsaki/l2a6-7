@@ -5,7 +5,15 @@ const Community = () => {
     return (
         <div className="max-w-screen-xl mx-auto">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">Community</h1>
-            <p className="text-gray-600">Share your thoughts with the community</p>
+            <div className="text-gray-600 opacity-75 flex flex-col gap-5">
+                <p>Welcome to our Community Gratitude Wall, a virtual space dedicated to spreading positivity and appreciation! In times of hardship, it's crucial to acknowledge the support and kindness we receive from others. Here, you have the opportunity to express your gratitude openly and share the love.</p>
+
+                <p>Our Gratitude Wall serves as a beacon of hope and encouragement, where individuals can post comments reflecting on the support they've received during challenging moments. Whether it's a friend's comforting words, a family member's unwavering support, or even a stranger's act of kindness, every expression of gratitude is welcome and celebrated.</p>
+
+                <p>   We believe in the power of gratitude to uplift spirits, foster connections, and inspire others to pay it forward. By sharing your appreciation here, you contribute to creating a ripple effect of positivity throughout our community.</p>
+
+                <p> Join us in spreading gratitude and kindness. Take a moment to reflect on the support you've received and share your heartfelt messages with us. Let's fill this wall with love, compassion, and gratitude that shines brightly for all to see. Together, we can make a difference, one thankful message at a time.</p>
+            </div>
             <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-2">Create a post</h2>
 
             <MdTextEditor />

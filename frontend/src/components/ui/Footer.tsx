@@ -65,9 +65,9 @@ const Footer = () => {
                     <div>
                         <h2 className='text-white text-xl font-semibold mb-7'>Contact Form</h2>
                         <form onSubmit={(e) => e.preventDefault()} className='flex flex-col gap-2.5'>
-                            <input type="text" placeholder="Your Name" className='w-full bg-transparent  border-[#c9c9c9] text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px] outline-none focus:outline-none duration-300 px-5' />
-                            <input type="text" placeholder="Your Email" className='w-full bg-transparent  border-[#c9c9c9] outline-none focus:outline-none text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px]  duration-300 px-5' />
-                            <textarea name="" id="" placeholder='Your Message' className='w-full bg-transparent  border-[#c9c9c9] bg-[#2C353C] text-[#c9c9c9] text-[14px] py-2 px-5 outline-none h-[120px] resize-none focus:outline-none  duration-300'></textarea>
+                            <input type="text" placeholder="Your Name" className='w-full bg-transparent border border-[#c9c9c9] text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px] outline-none focus:outline-none duration-300 px-5' />
+                            <input type="text" placeholder="Your Email" className='w-full bg-transparent border border-[#c9c9c9] outline-none focus:outline-none text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px]  duration-300 px-5' />
+                            <textarea name="" id="" placeholder='Your Message' className='w-full bg-transparent border  border-[#c9c9c9] bg-[#2C353C] text-[#c9c9c9] text-[14px] py-2 px-5 outline-none h-[120px] resize-none focus:outline-none  duration-300'></textarea>
                             <input type="submit" value="Send Message" className='bg-main text-white py-2 px-4 cursor-pointer hover:bg-opacity-85 hover:text-black duration-300  border-none focus:outline-none' />
                         </form>
                     </div>
