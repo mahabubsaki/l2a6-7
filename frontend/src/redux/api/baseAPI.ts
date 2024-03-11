@@ -4,5 +4,5 @@ export const baseApi = createApi({
     reducerPath: 'baseApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
     endpoints: () => ({}),
-    tagTypes: ['allReliefGoods', 'Community', 'DonationLeaderboard']
+    tagTypes: ['allReliefGoods', 'Community', 'DonationLeaderboard', 'testimonials']
 });

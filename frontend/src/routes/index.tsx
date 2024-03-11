@@ -13,6 +13,7 @@ import Statistics from "../screens/Statistics";
 import Notfound from "../screens/404";
 import Community from "../screens/Community";
 import Leaderboard from "../screens/Leaderboard";
+import CreateTestimonial from "../screens/CreateTestimonial";
 
 const routes = createBrowserRouter([{
     path: '/',
@@ -68,6 +69,10 @@ const routes = createBrowserRouter([{
         {
             path: '/dashboard/create-supply',
             element: <CreateSupply />
+        },
+        {
+            path: '/dashboard/create-testimonial',
+            element: <CreateTestimonial />
         }
     ]
 }

@@ -25,6 +25,11 @@ const Dashboard = () => {
                             'bg-main text-white': pathname === '/dashboard/create-supply',
                             'bg-white text-main': pathname !== '/dashboard/create-supply',
                         })}>Create Supply</li></Link>
+                    <Link to={'/dashboard/create-testimonial'}>
+                        <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer  rounded-full', {
+                            'bg-main text-white': pathname === '/dashboard/create-testimonial',
+                            'bg-white text-main': pathname !== '/dashboard/create-testimonial',
+                        })}>Create Testimonial</li></Link>
                     <Link to={'/'}>
                         <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer  rounded-full', {
                             'bg-main text-white': pathname === '/',

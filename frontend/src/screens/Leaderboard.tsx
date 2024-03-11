@@ -27,6 +27,7 @@ const Leaderboard = () => {
             <div className='flex flex-col gap-5  mt-10 mb-20'>
                 {data.map((item: { name: string; photoURL: string; totalAmount: number; }, index: number) => (
                     <div key={index} className='flex gap-3 items-center'>
+                        <p className="text-3xl">{index + 1}.</p>
                         <div className={classNames('w-14 h-14 rounded-full border-4 overflow-hidden', {
                             'border-[#FFD700]': index === 0,
                             'border-[#C0C0C0]': index === 1,
