@@ -32,7 +32,7 @@ const TopRelief = () => {
     }
     return (
         <div id='top-relief' ref={ref} className='my-20'>
-            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Top Relief Goods</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold text-black dark:text-white'>Top Relief Goods</motion.h1>
             <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>We are providing these relief goods to the people who are in need</motion.p>
             <div className='flex justify-center mt-2 mb-16'>
                 <span className='size-5 rounded-full deco relative border-2 flex justify-center items-center border-[#E6E6E6] '>
@@ -46,7 +46,7 @@ const TopRelief = () => {
             </div>
             <div>
                 <Link to={'/relief-goods'}>
-                    <button className='bg-main text-white font-semibold px-6 py-2.5 rounded-full hover:bg-transparent border-main border hover:text-main duration-300 mt-16 mx-auto block'>View All</button>
+                    <button className='bg-main text-white font-semibold px-6 py-2.5 rounded-full hover:bg-transparent border-main border hover:text-main dark:text-dark-main duration-300 mt-16 mx-auto block'>View All</button>
                 </Link>
             </div>
         </div>

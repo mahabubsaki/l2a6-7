@@ -69,7 +69,7 @@ const Testimonial = () => {
                 <Slider {...settings} autoplay dots={true} infinite={true} slidesToShow={3} responsive={RESPONSIVE_SETTINGS} easing='easeOut' afterChange={(current) => setActive(current)} adaptiveHeight centerPadding='0' initialSlide={0} pauseOnHover arrows={false}  >
                     {testimonials.map((testimonial: Record<string, unknown>, index: number) => (
                         <div className='relative py-10 ' key={index}>
-                            <div className='size-14 bg-white shadow-xl left-1/2 right-1/2 -translate-x-1/2  rounded-full absolute top-3 text-main text-3xl flex justify-center items-center'>
+                            <div className='size-14 bg-white dark:bg-black shadow-xl left-1/2 right-1/2 -translate-x-1/2  rounded-full absolute top-3 text-main dark:text-dark-main text-3xl flex justify-center items-center'>
                                 <FaQuoteRight />
                             </div>
 
@@ -87,11 +87,11 @@ const Testimonial = () => {
 
 const Item = ({ img, name, position, review }: { img: string, name: string, position: string, review: string; }) => {
     return (
-        <div className='flex flex-col gap-4 items-center min-h-[450px] bg-white p-10 shadow-xl'>
+        <div className='flex flex-col gap-4 items-center min-h-[450px] bg-white dark:bg-gray-400 p-10 shadow-xl'>
 
             <img src={img} alt={name} className='w-[100px] h-[100px] rounded-full' />
             <h1 className='text-xl font-semibold'>{name}</h1>
-            <h2 className='text-main text-lg'>{position}</h2>
+            <h2 className='text-main dark:text-dark-main text-lg'>{position}</h2>
             <p className='text-center text-gray-500'>{review}</p>
         </div>
     );

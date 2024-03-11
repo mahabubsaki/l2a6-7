@@ -15,7 +15,7 @@ const Login = () => {
     }
     return (
         <div className="mt-5">
-            <h1 className="text-main text-2xl font-bold text-center">Login</h1>
+            <h1 className="text-main dark:text-dark-main text-2xl font-bold text-center">Login</h1>
             <div className="max-w-md mx-auto mt-5">
                 <form onSubmit={async (e) => {
                     e.preventDefault();
@@ -32,18 +32,18 @@ const Login = () => {
 
                 }} className="flex flex-col gap-5">
                     <div>
-                        <label htmlFor="email" className="text-main ">Email</label>
+                        <label htmlFor="email" className="text-main dark:text-dark-main ">Email</label>
                         <input autoComplete="off" required onChange={(e) => setCredentials(pre => ({ ...pre, email: e.target.value }))} type="email" id="email" placeholder="Your Email" className='w-full   border-[#c9c9c9] mt-2 text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px] outline-none focus:outline-none duration-300 px-5' />
                     </div>
                     <div>
-                        <label htmlFor="password" className="text-main ">Password</label>
+                        <label htmlFor="password" className="text-main dark:text-dark-main ">Password</label>
                         <input autoComplete="off" required onChange={(e) => setCredentials(pre => ({ ...pre, password: e.target.value }))} type="password" id="password" placeholder="Your Password" className='w-full   border-[#c9c9c9] mt-2 text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px] outline-none focus:outline-none duration-300 px-5' />
                     </div>
                     <div>
-                        <button disabled={isLoading} className="bg-main disabled:bg-gray-400  border-2 my-4 text-white py-2.5 hover:bg-transparent hover:text-main duration-300 px-5 rounded-md hover:border-main border-white">Login</button>
+                        <button disabled={isLoading} className="bg-main disabled:bg-gray-400  border-2 my-4 text-white py-2.5 hover:bg-transparent hover:text-main dark:text-dark-main duration-300 px-5 rounded-md hover:border-main border-white">Login</button>
                     </div>
                 </form>
-                <p>Don't have an account? <span className="text-main font-semibold"><Link to={'/register'}>REGISTER</Link></span> now</p>
+                <p>Don't have an account? <span className="text-main dark:text-dark-main font-semibold"><Link to={'/register'}>REGISTER</Link></span> now</p>
 
             </div>
         </div>

@@ -58,12 +58,12 @@ const Supplies = () => {
                                         <button onClick={() => {
                                             setEdited(supply);
                                             onOpen();
-                                        }} className='bg-main text-white font-semibold px-6 py-2.5 rounded-full hover:bg-transparent border-main border hover:text-main duration-300'>Edit</button>
+                                        }} className='bg-main text-white font-semibold px-6 py-2.5 rounded-full hover:bg-transparent border-main border hover:text-main dark:text-dark-main duration-300'>Edit</button>
 
 
                                         <Popover>
                                             <PopoverTrigger>
-                                                <button className='bg-white text-main font-semibold px-6 py-2.5 rounded-full hover:bg-main border-main border hover:text-white duration-300 ml-2'>Delete</button>
+                                                <button className='bg-white text-main dark:text-dark-main font-semibold px-6 py-2.5 rounded-full hover:bg-main border-main border hover:text-white duration-300 ml-2'>Delete</button>
                                             </PopoverTrigger>
                                             <PopoverContent>
                                                 <PopoverArrow />

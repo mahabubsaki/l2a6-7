@@ -66,7 +66,7 @@ const AccordionItem = ({ header, ...rest }: { header: string; }) => (
         className="border-b"
         buttonProps={{
             className: ({ isEnter }) =>
-                `flex w-full p-4 text-left hover:bg-slate-100 ${isEnter && "bg-slate-200"
+                `flex w-full p-4 text-left  hover:bg-stone-100 dark:hover:bg-stone-800 ${isEnter && "bg-stone-100 dark:bg-stone-800"
                 }`
         }}
         contentProps={{
@@ -82,7 +82,7 @@ export default function FAQ() {
         <div className="my-20 max-w-screen-xl mx-auto">
 
 
-            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'> FAQS</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold text-black dark:text-white'> FAQS</motion.h1>
             <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>These are one of the common question asked by our customers</motion.p>
             <div className='flex justify-center mt-2 mb-16'>
                 <span className='size-5 rounded-full deco relative border-2 flex justify-center items-center border-[#E6E6E6] '>
@@ -91,10 +91,11 @@ export default function FAQ() {
             </div>
             <motion.div initial={{ opacity: 0, scaleY: 0, }} whileInView={{ opacity: 1, scaleY: 1 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className="mx-2 origin-top my-4 border-t">
 
-                <Accordion transition transitionTimeout={200}>
+                <Accordion transition transitionTimeout={200} className="text-black dark:text-white">
+
                     {faqs.map((item, index) => (
                         // @ts-expect-error - dont know why this is happening
-                        <AccordionItem key={index} header={item.question} >
+                        <AccordionItem key={index} header={item.question}  >
                             <p>{item.answer}</p>
                         </AccordionItem>
                     ))}

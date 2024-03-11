@@ -11,8 +11,8 @@ const Footer = () => {
                         <div className='flex items-center gap-2 select-none mr-0 md:mr-4'>
                             <img src={img} alt="logo" />
                             <div className=' flex flex-col gap-1 items-center'>
-                                <h1 className='text-3xl uppercase font-bold text-white'>Aid<span className='text-main'>Pulse</span></h1>
-                                <p className='text-main text-xs'>Non Profit Charity</p>
+                                <h1 className='text-3xl uppercase font-bold text-white'>Aid<span className='text-main dark:text-dark-main'>Pulse</span></h1>
+                                <p className='text-main dark:text-dark-main text-xs'>Non Profit Charity</p>
                             </div>
                         </div>
                         <p className='text-[13px] text-[#c9c9c9] my-5 '>We work for the society and the needy person who actually deserve this</p>
@@ -53,13 +53,13 @@ const Footer = () => {
                     <div>
                         <h1 className='text-white text-xl font-semibold mb-7 text-left md:text-center'>Pages</h1>
                         <ul className='text-[#c9c9c9] text-[14px] flex flex-col gap-5 items-start md:items-center'>
-                            <li className='cursor-pointer hover:text-main duration-300'>Home</li>
-                            <li className='cursor-pointer hover:text-main duration-300'>About Us</li>
-                            <li className='cursor-pointer hover:text-main duration-300'>Our Services</li>
-                            <li className='cursor-pointer hover:text-main duration-300'>Testimonials</li>
-                            <li className='cursor-pointer hover:text-main duration-300'>Contact Us</li>
-                            <li className='cursor-pointer hover:text-main duration-300'>Faq</li>
-                            <li className='cursor-pointer hover:text-main duration-300'>Archives</li>
+                            <li className='cursor-pointer hover:text-main dark:text-dark-main duration-300'>Home</li>
+                            <li className='cursor-pointer hover:text-main dark:text-dark-main duration-300'>About Us</li>
+                            <li className='cursor-pointer hover:text-main dark:text-dark-main duration-300'>Our Services</li>
+                            <li className='cursor-pointer hover:text-main dark:text-dark-main duration-300'>Testimonials</li>
+                            <li className='cursor-pointer hover:text-main dark:text-dark-main duration-300'>Contact Us</li>
+                            <li className='cursor-pointer hover:text-main dark:text-dark-main duration-300'>Faq</li>
+                            <li className='cursor-pointer hover:text-main dark:text-dark-main duration-300'>Archives</li>
                         </ul>
                     </div>
                     <div>
@@ -74,7 +74,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='border-t-2 border-[#2D373F] py-6 text-center'>
-                <p className='text-white text-sm'>Website created by <a href="https://github.com/mahabubsaki" target='_blank' className='text-main font-semibold'>Mahabub Saki</a> with love & care</p>
+                <p className='text-white text-sm'>Website created by <a href="https://github.com/mahabubsaki" target='_blank' className='text-main dark:text-dark-main font-semibold'>Mahabub Saki</a> with love & care</p>
             </div>
         </div>
     );

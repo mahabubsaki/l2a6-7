@@ -24,7 +24,7 @@ const missionData = [
 const Missions = () => {
     return (
         <div className='py-20'>
-            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'> About Us</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold  text-black dark:text-white' > About Us</motion.h1>
             <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>We are a non-profit charity organization that aims to help the needy and the poor</motion.p>
             <div className='flex justify-center mt-2 mb-16'>
                 <span className='size-5 rounded-full deco relative border-2 flex justify-center items-center border-[#E6E6E6] '>
@@ -65,14 +65,14 @@ const Item = ({ icon, title, description }: { icon: JSX.Element, title: string, 
         }} className='flex  gap-7 max-w-[370px] mx-auto  bg-white p-8 shadow-xl group'>
             <div>
                 <div className='bg-main p-5 relative z-10 border-2 group-hover:bg-white duration-300  border-main'>
-                    <div className='group-hover:text-main text-white'>
+                    <div className='group-hover:text-main dark:text-dark-main text-white'>
                         {icon}
                     </div>
                     <div className='absolute bg-white rotate-[45deg] -bottom-[19px] -right-[19px] z-20 size-8' />
                 </div>
             </div>
             <div className='flex flex-col gap-5'>
-                <h1 className='text-xl font-semibold'>{title}</h1>
+                <h1 className='text-xl font-semibold text-black '>{title}</h1>
                 <p className=' text-[#9c9c9c] text-sm'>{description}</p>
             </div>
         </motion.div>

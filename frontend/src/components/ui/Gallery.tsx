@@ -33,7 +33,7 @@ const Gallery = () => {
     }, [isInView]);
     return (
         <div className="py-20">
-            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold'>Our Gallery</motion.h1>
+            <motion.h1 initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-4xl font-semibold  text-black dark:text-white'>Our Gallery</motion.h1>
             <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, type: 'tween', ease: 'easeOut' }} className='text-center text-lg text-gray-500 mt-4'>These are the images of our charity events and activities</motion.p>
             <div className='flex justify-center mt-2 mb-16'>
                 <span className='size-5 rounded-full deco relative border-2 flex justify-center items-center border-[#E6E6E6] '>
@@ -56,7 +56,7 @@ const Gallery = () => {
                     <p className="text-xl opacity-80">Within our gallery, you'll find a collection of heartwarming moments showcasing the incredible impact of generosity.</p>
                 </div>
                 <div>
-                    <button className='bg-white w-fit text-[12px] border-white border text-main  px-6 py-2.5 rounded-full text-lg hover:bg-transparent font-semibold  hover:text-white duration-300'>View Full Gallery</button>
+                    <button className='bg-white w-fit text-[12px] border-white border text-main dark:text-dark-main  px-6 py-2.5 rounded-full text-lg hover:bg-transparent font-semibold  hover:text-white duration-300 dark:bg-purple-500'>View Full Gallery</button>
                 </div>
             </div>
         </div>

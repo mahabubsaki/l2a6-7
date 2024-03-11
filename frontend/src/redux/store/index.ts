@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import { baseApi } from '../api/baseAPI';
 import authSlice from '../features/auth/authSlice';
+import themeSlice from '../features/theme/themeSlice';
 
 
 const persistConfig = {
@@ -13,12 +14,14 @@ const persistConfig = {
 
 const persistedDemoSlice = persistReducer(persistConfig, demoSlice);
 const persistedAuthSlice = persistReducer(persistConfig, authSlice);
+const persistedThemeSlice = persistReducer(persistConfig, themeSlice);
 
 export const store = configureStore({
     reducer: {
         demo: persistedDemoSlice,
         [baseApi.reducerPath]: baseApi.reducer,
-        auth: persistedAuthSlice
+        auth: persistedAuthSlice,
+        theme: persistedThemeSlice,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

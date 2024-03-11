@@ -10,7 +10,7 @@ import { TbHeartHandshake } from 'react-icons/tb';
 const LowerBanner = () => {
     return (
         <div className='grid xl:grid-cols-3 mb-20 grid-cols-1 md:grid-cols-2'>
-            {[{ img: img1, icon: <CiDollar size={70} className='text-white' />, title: 'DONATION', action: 'DONATE NOW', subHeading: 'Donate different relief goods now to make impact on those peoples life who need it' }, { img: img2, icon: <FaPeopleGroup size={70} className='text-white' />, title: 'VOLUNTEER', action: 'JOIN NOW', subHeading: 'Join our volunteer team to get all the updates about our goods distribution' }, { img: img3, icon: <TbHeartHandshake size={70} className='text-white' />, title: 'FUNDRAISE', action: 'READ MORE', subHeading: 'Explore more if you want to raise a fund of any kind of relief goods for people' }].map((img, index) => (
+            {[{ img: img1, icon: <CiDollar size={70} className='text-white dark:text-black' />, title: 'DONATION', action: 'DONATE NOW', subHeading: 'Donate different relief goods now to make impact on those peoples life who need it' }, { img: img2, icon: <FaPeopleGroup size={70} className='text-white dark:text-black' />, title: 'VOLUNTEER', action: 'JOIN NOW', subHeading: 'Join our volunteer team to get all the updates about our goods distribution' }, { img: img3, icon: <TbHeartHandshake size={70} className='text-white dark:text-black' />, title: 'FUNDRAISE', action: 'READ MORE', subHeading: 'Explore more if you want to raise a fund of any kind of relief goods for people' }].map((img, index) => (
                 <EachBanner {...img} idx={index} key={index} />
             ))}
         </div>
@@ -26,10 +26,10 @@ const EachBanner = ({ img, idx, title, action, subHeading, icon }: { img: string
                 <div>
                     {icon}
                 </div>
-                <div className='flex flex-col gap-4 text-white'>
+                <div className='flex flex-col gap-4 text-white dark:text-black'>
                     <h2 className='text-2xl font-bold'>{title}</h2>
                     <p className='max-w-72'>{subHeading}</p>
-                    <button className='bg-transparent w-fit border-white border-2 text-white px-6 py-2.5 rounded-full hover:bg-transparent font-semibold  hover:text-main duration-300 hover:bg-white'>{action}</button>
+                    <button className='bg-transparent w-fit border-white border-2 text-white  dark:border-black px-6 py-2.5 rounded-full hover:bg-transparent font-semibold  hover:text-main dark:hover:bg-black dark:text-dark-main duration-300 hover:bg-white'>{action}</button>
                 </div>
             </div>
         </div>

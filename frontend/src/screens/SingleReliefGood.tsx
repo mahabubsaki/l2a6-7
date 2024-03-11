@@ -40,7 +40,7 @@ const SingleReliefGood = () => {
                 <h2 className='text-lg font-semibold text-center text-[#9c9c9c]'>{data2.category}</h2>
                 <div className='flex justify-center gap-2.5  font-semibold'>
                     <p className='text-[#9c9c9c]'>Collected : {data2.collected}</p>
-                    <p className='text-main'>Goal : {data2.goal}</p>
+                    <p className='text-main dark:text-dark-main'>Goal : {data2.goal}</p>
                 </div>
                 <p className='] text-[#9c9c9c] text-center'>{data2.description}</p>
                 <div className='flex gap-6 flex-wrap justify-center my-4'>

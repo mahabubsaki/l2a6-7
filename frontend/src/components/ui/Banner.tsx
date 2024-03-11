@@ -6,16 +6,16 @@ const Banner = () => {
     return (
         <section style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(${banner})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2  items-center gap-8 ">
             <div>
-                <span className="block mb-4 text-xs md:text-sm text-main font-bold">
+                <span className="block mb-4 text-xs md:text-sm text-main dark:text-dark-main font-bold">
                     Making a Difference
                 </span>
-                <h3 className="text-3xl md:text-5xl text-white font-semibold">
+                <h3 className="text-3xl md:text-5xl text-white dark:text-black font-semibold">
                     Support Our Cause through Charitable Giving
                 </h3>
-                <p className="text-base md:text-lg text-white my-4 md:my-6">
+                <p className="text-base md:text-lg text-white dark:text-black my-4 md:my-6">
                     Welcome to AidPulse, where we believe in the power of generosity to transform lives and communities. Through our charitable initiatives, we strive to address pressing social issues, promote education, support healthcare, and uplift underserved populations. Join us in our mission to make a meaningful difference in the world through your charitable contributions.
                 </p>
-                <button className="bg-main text-white font-medium py-2 px-4 rounded transition-all hover:bg-opacity-35 active:scale-95">
+                <button className="bg-main dark:bg-dark-main text-white dark:text-black font-medium py-2 px-4 rounded transition-all hover:bg-opacity-35 active:scale-95">
                     Discover More
                 </button>
             </div>

@@ -13,27 +13,27 @@ const Dashboard = () => {
                     <Link to={'/dashboard'}>
                         <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer rounded-full', {
                             'bg-main text-white': pathname === '/dashboard',
-                            'bg-white text-main': pathname !== '/dashboard',
+                            'bg-white text-main dark:text-dark-main': pathname !== '/dashboard',
                         })}>Statistics</li></Link>
                     <Link to={'/dashboard/supplies'}>
                         <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer rounded-full', {
                             'bg-main text-white': pathname === '/dashboard/supplies',
-                            'bg-white text-main': pathname !== '/dashboard/supplies',
+                            'bg-white text-main dark:text-dark-main': pathname !== '/dashboard/supplies',
                         })}>Supplies</li></Link>
                     <Link to={'/dashboard/create-supply'}>
                         <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer  rounded-full', {
                             'bg-main text-white': pathname === '/dashboard/create-supply',
-                            'bg-white text-main': pathname !== '/dashboard/create-supply',
+                            'bg-white text-main dark:text-dark-main': pathname !== '/dashboard/create-supply',
                         })}>Create Supply</li></Link>
                     <Link to={'/dashboard/create-testimonial'}>
                         <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer  rounded-full', {
                             'bg-main text-white': pathname === '/dashboard/create-testimonial',
-                            'bg-white text-main': pathname !== '/dashboard/create-testimonial',
+                            'bg-white text-main dark:text-dark-main': pathname !== '/dashboard/create-testimonial',
                         })}>Create Testimonial</li></Link>
                     <Link to={'/'}>
                         <li className={classNames('py-2.5 px-5 my-2.5 duration-300 border-2 border-white cursor-pointer  rounded-full', {
                             'bg-main text-white': pathname === '/',
-                            'bg-white text-main': pathname !== '/',
+                            'bg-white text-main dark:text-dark-main': pathname !== '/',
                         })}>Home</li></Link>
 
                     <li>
