@@ -26,10 +26,12 @@ async function run() {
         const db = client.db('Assingment-6');
         const userCollection = db.collection('users');
         const reliefCollection = db.collection('relief');
+        const communityCollection = db.collection('community');
+        const commentCollection = db.collection('comments');
 
         // User Registration
         app.post('/api/v1/register', async (req, res) => {
-            const { name, email, password } = req.body;
+            const { name, email, password, photoURL } = req.body;
 
             // Check if email already exists
             const existingUser = await userCollection.findOne({ email });
@@ -46,12 +48,12 @@ async function run() {
             // Generate JWT token
             const token = jwt.sign({ email: email }, process.env.JWT_SECRET, { expiresIn: process.env.EXPIRES_IN });
             // Insert user into the database
-            const { insertedId } = await userCollection.insertOne({ name, email, password: hashedPassword });
+            const { insertedId } = await userCollection.insertOne({ name, email, password: hashedPassword, photoURL });
 
             res.status(201).json({
                 success: true,
                 message: 'User registered successfully',
-                user: { name, email, id: insertedId },
+                user: { name, email, id: insertedId, photoURL },
                 token
             });
         });
@@ -78,11 +80,180 @@ async function run() {
             res.json({
                 success: true,
                 message: 'Login successful',
-                user: { name: user.name, email: user.email, id: user._id },
+                user: { name: user.name, email: user.email, id: user._id, photoURL: user.photoURL },
                 token
             });
         });
 
+        //Create Community
+        app.post('/api/v1/create-community', async (req, res) => {
+            try {
+                await communityCollection.insertOne({ ...req.body, user: new ObjectId(req.body.user), timestamp: new Date() });
+                res.send({ success: true, message: "Community created successfully" });
+            }
+            catch (e) {
+                res.status(400).send({ message: "Unknown Error" });
+            }
+        }
+        );
+
+
+        //Get user by id
+        app.get('/api/v1/user-by-id/:id', async (req, res) => {
+            try {
+                const user = await userCollection.findOne({ _id: new ObjectId(req.params.id) });
+                res.send(user);
+            }
+            catch (e) {
+                res.status(400).send({ message: "Invalid id" });
+            }
+        }
+        );
+
+        // get all community post
+        app.get('/api/v1/community-all', async (req, res) => {
+            const community = await communityCollection.aggregate([
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'user',
+                        foreignField: '_id',
+                        as: 'user'
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'comments',
+                        localField: '_id',
+                        foreignField: 'community',
+                        as: 'comments'
+                    }
+                },
+                {
+                    $unwind: '$user'
+                },
+
+                {
+                    $sort: { timestamp: -1 }
+                },
+                {
+                    $project: {
+                        _id: 1,
+                        userId: 1,
+                        title: 1,
+                        content: 1,
+                        timestamp: 1,
+                        user: {
+                            _id: 1,
+                            name: 1,
+                            email: 1,
+                            photoURL: 1
+                        },
+                        comments: {
+                            _id: 1,
+                            user: 1,
+                            community: 1,
+                            comment: 1,
+                            timestamp: 1
+                        }
+                    }
+                }]).toArray();
+
+            res.send(community);
+        });
+
+        // get single community post
+        app.get('/api/v1/community/:id', async (req, res) => {
+            try {
+                const id = req.params.id;
+                const community = await communityCollection.aggregate([
+                    {
+                        $match: { _id: new ObjectId(id) }
+                    },
+                    {
+                        $lookup: {
+                            from: 'users',
+                            localField: 'user',
+                            foreignField: '_id',
+                            as: 'user'
+                        }
+                    },
+                    {
+                        $lookup: {
+                            from: 'comments',
+                            localField: '_id',
+                            foreignField: 'community',
+                            as: 'comments'
+                        }
+                    },
+                    {
+                        $unwind: '$user'
+                    },
+                    {
+                        $unwind: '$comments'
+                    },
+                    {
+                        $lookup: {
+                            from: 'users',
+                            localField: 'comments.user',
+                            foreignField: '_id',
+                            as: 'comments.user'
+                        }
+                    },
+                    {
+                        $group: {
+                            _id: '$_id',
+                            userId: { $first: '$userId' },
+                            title: { $first: '$title' },
+                            content: { $first: '$content' },
+                            timestamp: { $first: '$timestamp' },
+                            user: { $first: '$user' },
+                            comments: { $push: '$comments' }
+                        }
+                    },
+                    {
+                        $project: {
+                            _id: 1,
+                            userId: 1,
+                            title: 1,
+                            content: 1,
+                            timestamp: 1,
+                            user: {
+                                _id: 1,
+                                name: 1,
+                                email: 1,
+                                photoURL: 1
+                            },
+                            comments: {
+                                _id: 1,
+                                user: { $arrayElemAt: ['$comments.user', 0] },
+                                community: 1,
+                                comment: 1,
+                                timestamp: 1
+                            }
+                        }
+                    }
+                ]).toArray();
+
+
+                res.send(community[0]);
+            }
+            catch (e) {
+                res.status(400).send({ message: "Invalid id" });
+            }
+        });
+
+        // create comment
+        app.post('/api/v1/create-comment', async (req, res) => {
+            try {
+                await commentCollection.insertOne({ ...req.body, user: new ObjectId(req.body.user), community: new ObjectId(req.body.community), timestamp: new Date() });
+                res.send({ success: true, message: "Comment created successfully" });
+            }
+            catch (e) {
+                res.status(400).send({ message: "Unknown Error" });
+            }
+        }
+        );
 
         // ==============================================================
         // WRITE YOUR CODE HERE
@@ -111,7 +282,7 @@ async function run() {
         app.delete('/api/v1/relief-goods/:id', async (req, res) => {
             try {
                 const id = req.params.id;
-                const relief = await reliefCollection.deleteOne({ _id: new ObjectId(id) });
+                await reliefCollection.deleteOne({ _id: new ObjectId(id) });
 
                 res.send({ success: true, message: "Relief goods deleted successfully" });
             }
