@@ -10,15 +10,20 @@ const communityApi = baseApi.injectEndpoints({
                 body: communityInfo,
             }),
         }),
-        // register: builder.mutation({
-        //     query: (userInfo) => ({
-        //         url: '/api/v1/register',
-        //         method: 'POST',
-        //         body: userInfo,
-        //     }),
-        // }),
+        getAllComunity: builder.query({
+            query: () => ({
+                url: '/api/v1/community-all',
+                method: 'GET',
+            }),
+        }),
+        getSingleCommunity: builder.query({
+            query: (id) => ({
+                url: `/api/v1/community/${id}`,
+                method: 'GET',
+            }),
+        }),
 
     }),
 });
 
-export const { useCreateCommunityMutation } = communityApi;
+export const { useCreateCommunityMutation, useGetAllComunityQuery, useGetSingleCommunityQuery } = communityApi;

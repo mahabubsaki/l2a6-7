@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useCreateCommunityMutation } from "../redux/features/community/communityAPI";
 import { useAppSelector } from "../redux/store/hooks";
 import { selectCurrentUser } from "../redux/features/auth/authSlice";
+import AllCommunityPosts from "../components/ui/AllCommunityPosts";
 
 
 const Community = () => {
@@ -54,6 +55,11 @@ const Community = () => {
                 <Input ref={ref2} type="text" placeholder="Write your title" />
                 <h3 className="text-lg font-semibold text-gray-800 mt-4 mb-2">Write your message</h3>
                 <MdTextEditor handleBlog={handleBlog} editorRef={ref} />
+            </div>
+            <div>
+                <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-2">All Posts</h2>
+
+                <AllCommunityPosts />
             </div>
         </div>
     );

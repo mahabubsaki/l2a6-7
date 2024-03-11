@@ -26,6 +26,9 @@ dependencies:
   classnames:
     specifier: ^2.5.1
     version: 2.5.1
+  date-fns:
+    specifier: ^3.3.1
+    version: 3.3.1
   framer-motion:
     specifier: ^11.0.6
     version: 11.0.8(react-dom@18.2.0)(react@18.2.0)
@@ -2758,6 +2761,10 @@ packages:
   /d3-timer@3.0.1:
     resolution: {integrity: sha512-ndfJ/JxxMd3nw31uyKoY2naivF+r29V+Lc0svZxe1JvvIRmi8hUsrMvdOwgS1o6uBHmiz91geQ0ylPP0aj1VUA==}
     engines: {node: '>=12'}
+    dev: false
+
+  /date-fns@3.3.1:
+    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
     dev: false
 
   /debug@4.3.4:
