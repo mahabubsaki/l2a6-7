@@ -46,7 +46,22 @@ const goodsApi = baseApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        postDonation: builder.mutation({
+            query: (data) => ({
+                url: '/api/v1/create-donation',
+                method: 'POST',
+                body: data
+            }),
+            invalidatesTags: ['DonationLeaderboard']
+        }),
+        getDonations: builder.query({
+            query: () => ({
+                url: '/api/v1/donation-leaderboard',
+                method: 'GET',
+            }),
+            providesTags: ['DonationLeaderboard']
+        }),
     }),
 });
 
-export const { useGetALLQuery, useGetTopQuery, useGetSingleQuery, useDeleteOneMutation, useInsertOneMutation, useUpdateOneMutation } = goodsApi;
+export const { useGetALLQuery, useGetTopQuery, useGetSingleQuery, useDeleteOneMutation, useInsertOneMutation, useUpdateOneMutation, usePostDonationMutation, useGetDonationsQuery } = goodsApi;

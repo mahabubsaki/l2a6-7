@@ -12,6 +12,7 @@ import CreateSupply from "../screens/CreateSupply";
 import Statistics from "../screens/Statistics";
 import Notfound from "../screens/404";
 import Community from "../screens/Community";
+import Leaderboard from "../screens/Leaderboard";
 
 const routes = createBrowserRouter([{
     path: '/',
@@ -42,6 +43,10 @@ const routes = createBrowserRouter([{
         {
             path: '/community',
             element: <RequireAuth><Community /></RequireAuth>
+        },
+        {
+            path: '/leaderboard',
+            element: <Leaderboard />
         }
 
     ]

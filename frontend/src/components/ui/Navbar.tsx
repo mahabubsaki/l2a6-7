@@ -104,6 +104,7 @@ const MainNav = () => {
             <ul className='max-w-screen-xl mx-auto flex items-center flex-col sm:flex-row justify-center gap-8 uppercase'>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/'}>HOME</Link></li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/relief-goods'}>Relief Goods</Link></li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/leaderboard'}>Leaderboard</Link></li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/community'}>Community</Link></li>
                 {user ? <>     <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/dashboard'}>
                     Dashboard</Link></li>
@@ -112,7 +113,7 @@ const MainNav = () => {
                         toast.success('Logout Success');
                     }} className='bg-main border-main border text-white px-6 py-2.5 rounded-full hover:bg-transparent font-semibold  hover:text-main duration-300'>Logout</button>
                     <Tooltip label={user.name} aria-label='USER-NAME-TOOLTIP' >
-                        <div className='size-[50px] rounded-full cursor-pointer'>
+                        <div className='size-[50px] rounded-full cursor-pointer overflow-hidden'>
                             <img src={user.photoURL} onError={(e) => e.currentTarget.src = 'https://cdn-icons-png.flaticon.com/128/4140/4140048.png'} className='w-full h-full' />
                         </div>
                     </Tooltip>

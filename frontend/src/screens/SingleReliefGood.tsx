@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useGetSingleQuery, useUpdateOneMutation } from '../redux/features/goods/goodsAPI';
+import { useGetSingleQuery, usePostDonationMutation, useUpdateOneMutation } from '../redux/features/goods/goodsAPI';
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Tooltip, useDisclosure } from '@chakra-ui/react';
 import { toast } from 'sonner';
+import { useAppSelector } from '../redux/store/hooks';
+import { selectCurrentUser } from '../redux/features/auth/authSlice';
 
 export interface ReliefInterFace {
     goal: number, collected: number, title: string, donaters: number, description: string; src: string; category: string; _id: string;
@@ -10,11 +12,13 @@ export interface ReliefInterFace {
 
 const SingleReliefGood = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const user = useAppSelector(selectCurrentUser);
     const { id } = useParams();
     const { data, isError, isLoading, error, refetch } = useGetSingleQuery(id);
     const [sliderValue, setSliderValue] = useState(0);
     const [showTooltip, setShowTooltip] = useState(false);
     const [updateOne] = useUpdateOneMutation();
+    const [postDonation] = usePostDonationMutation();
     const navigate = useNavigate();
 
     const data2 = data as ReliefInterFace;
@@ -48,6 +52,7 @@ const SingleReliefGood = () => {
                 onClose={onClose}
                 isOpen={isOpen}
                 motionPreset='slideInBottom'
+                onCloseComplete={() => setSliderValue(0)}
             >
                 <ModalOverlay />
                 <ModalContent>
@@ -86,6 +91,7 @@ const SingleReliefGood = () => {
                     <ModalFooter>
                         <Button aria-disabled={sliderValue === 0} colorScheme='green' mr={3} onClick={async () => {
                             const tid = toast.loading('Donation Processing...', { onAutoClose: () => navigate('/dashboard') });
+
                             const result = await updateOne({ ...data2, collected: data2.collected + sliderValue });
 
                             if ((result as { error: { data: { message: string; }; }; }).error) {
@@ -94,6 +100,9 @@ const SingleReliefGood = () => {
                             }
                             await refetch();
                             toast.success('Successfully donated', { id: tid });
+                            await postDonation({ reliefId: data2._id, quantity: sliderValue, user: user?._id }).unwrap().then(() => { }).catch(() => {
+                                toast.error('Unkown Error Occured');
+                            });
                             onClose();
 
                         }}>

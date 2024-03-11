@@ -71,7 +71,7 @@ const AllCommunityPosts = () => {
                         {singleDataLoading ? <div>Loading...</div> : null}
                         {singleDataData ? <div>Error Occured</div> : null}
                         {singleData ? <><div className='flex gap-4 items-center'>
-                            <Image src={singleData.user.photoURL} width={50} height={50} />
+                            <Image src={singleData.user.photoURL} onError={(e) => e.currentTarget.src = 'https://cdn-icons-png.flaticon.com/128/4140/4140048.png'} width={50} height={50} />
                             <div className='flex flex-col gap-2'>
                                 <p className='text-lg font-bold'>{singleData.user.name}</p>
                                 <p className='text-xs'>Posted <LiveTimer time={singleData.timestamp} /></p>
@@ -92,7 +92,7 @@ const AllCommunityPosts = () => {
                                         singleData.comments.map((comment: { _id: string, comment: string, user: TUser[], timestamp: Date; }) => (
                                             <div key={comment._id} className='border border-stone-200 rounded-2xl p-5'>
                                                 <div className='flex gap-4 items-center'>
-                                                    <Image src={comment.user[0].photoURL} width={50} height={50} />
+                                                    <Image src={comment.user[0].photoURL} onError={(e) => e.currentTarget.src = 'https://cdn-icons-png.flaticon.com/128/4140/4140048.png'} width={50} height={50} />
                                                     <div className='flex flex-col gap-2'>
                                                         <p className='text-lg font-bold'>{comment.user[0].name}</p>
                                                         <p className='text-xs'>Commented <LiveTimer time={comment.timestamp} /></p>
@@ -141,7 +141,7 @@ const AllCommunityPosts = () => {
                 <div key={post._id} className='border border-stone-200 rounded-2xl p-5'>
                     <div className='flex justify-between items-center p-4'>
                         <div className='flex gap-4 items-center'>
-                            <Image src={post.user.photoURL} width={50} height={50} />
+                            <Image src={post.user.photoURL} onError={(e) => e.currentTarget.src = 'https://cdn-icons-png.flaticon.com/128/4140/4140048.png'} width={50} height={50} />
                             <div className='flex flex-col gap-2'>
                                 <p className='text-lg font-bold'>{post.user.name}</p>
                                 <p className='text-xs'>Posted <LiveTimer time={post.timestamp} /></p>

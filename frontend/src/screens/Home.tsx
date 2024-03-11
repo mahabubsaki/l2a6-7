@@ -20,7 +20,8 @@ const Home = () => {
     const dispatch = useAppDispatch();
     const user = useAppSelector(selectCurrentUser);
 
-    const { data, isSuccess } = useUserByIdQuery(user?._id || "", { skip: !user });
+
+    const { data, isSuccess } = useUserByIdQuery(user?._id, { skip: !user });
     useEffect(() => {
 
         (async function () {
