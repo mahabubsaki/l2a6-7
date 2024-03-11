@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ChakraProvider>
-          <div className='bg-white dark:bg-black text-white dark:text-black'>
+          <div className='bg-white dark:bg-black text-black dark:text-white'>
             <RouterProvider router={routes} fallbackElement={<div>s</div>} />
           </div>
 

@@ -39,8 +39,8 @@ const Community = () => {
     };
     return (
         <div className="max-w-screen-xl mx-auto">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">Community</h1>
-            <div className="text-gray-600 opacity-75 flex flex-col gap-5">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-400 mb-2">Community</h1>
+            <div className="text-gray-600 dark:text-gray-300 opacity-75 flex flex-col gap-5">
                 <p>Welcome to our Community Gratitude Wall, a virtual space dedicated to spreading positivity and appreciation! In times of hardship, it's crucial to acknowledge the support and kindness we receive from others. Here, you have the opportunity to express your gratitude openly and share the love.</p>
 
                 <p>Our Gratitude Wall serves as a beacon of hope and encouragement, where individuals can post comments reflecting on the support they've received during challenging moments. Whether it's a friend's comforting words, a family member's unwavering support, or even a stranger's act of kindness, every expression of gratitude is welcome and celebrated.</p>
@@ -49,15 +49,15 @@ const Community = () => {
 
                 <p> Join us in spreading gratitude and kindness. Take a moment to reflect on the support you've received and share your heartfelt messages with us. Let's fill this wall with love, compassion, and gratitude that shines brightly for all to see. Together, we can make a difference, one thankful message at a time.</p>
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-2">Create a post</h2>
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-400 mt-8 mb-2">Create a post</h2>
 
             <div>
                 <Input ref={ref2} type="text" placeholder="Write your title" />
-                <h3 className="text-lg font-semibold text-gray-800 mt-4 mb-2">Write your message</h3>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-400 mt-4 mb-2">Write your message</h3>
                 <MdTextEditor handleBlog={handleBlog} editorRef={ref} />
             </div>
             <div>
-                <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-2">All Posts</h2>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-400 mt-8 mb-2">All Posts</h2>
 
                 <AllCommunityPosts />
             </div>

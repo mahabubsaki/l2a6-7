@@ -20,7 +20,7 @@ const AboutUs = () => {
                                 <div className="flex justify-center">
                                     <img src={volunteer.img} alt={volunteer.name} className="w-20 h-20 rounded-full" />
                                 </div>
-                                <h1 className="text-center text-xl font-bold mt-4">{volunteer.name}</h1>
+                                <h1 className="text-center text-xl font-bold mt-4  text-black">{volunteer.name}</h1>
                                 <p className="text-center text-gray-400">Address : {volunteer.email}</p>
                                 <p className="text-center text-gray-400">Phone : {volunteer.phone}</p>
                                 <p className="text-center text-gray-400">Address : {volunteer.address}</p>

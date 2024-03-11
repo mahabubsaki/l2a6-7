@@ -63,9 +63,9 @@ const Supplies = () => {
 
                                         <Popover>
                                             <PopoverTrigger>
-                                                <button className='bg-white text-main dark:text-dark-main font-semibold px-6 py-2.5 rounded-full hover:bg-main border-main border hover:text-white duration-300 ml-2'>Delete</button>
+                                                <button className='bg-white dark:bg-purple-500 text-main dark:text-dark-main font-semibold px-6 py-2.5 rounded-full hover:bg-main border-main border hover:text-white duration-300 ml-2'>Delete</button>
                                             </PopoverTrigger>
-                                            <PopoverContent>
+                                            <PopoverContent className='text-black'>
                                                 <PopoverArrow />
                                                 <PopoverCloseButton />
                                                 <PopoverHeader>Confirmation!</PopoverHeader>
