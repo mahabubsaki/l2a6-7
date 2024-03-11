@@ -13,13 +13,21 @@ const AllCommunityPosts = () => {
     const [id, setId] = useState('');
     const { data, isError, isLoading, refetch } = useGetAllComunityQuery([]);
     const user = useAppSelector(selectCurrentUser);
-    const { data: singleData = null, isLoading: singleDataLoading, isError: singleDataData, refetch: refetchSingle } = useGetSingleCommunityQuery(id, { skip: !id });
+    const { data: singleData, isLoading: singleDataLoading, isError: singleDataData, refetch: refetchSingle } = useGetSingleCommunityQuery(id, { skip: !id });
+    console.log(singleData, id);
     const [postComment] = usePostCommentMutation();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const buttonRef = useRef<HTMLButtonElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
     const commentref = useRef<HTMLDivElement>(null);
+
+
+    // useEffect(() => {
+    //     if (id) {
+    //         refetchSingle();
+    //     }
+    // }, [id]);
 
     const handleComment = (value: string) => {
         if (!value) {
@@ -89,8 +97,8 @@ const AllCommunityPosts = () => {
 
                                 <div ref={commentref} className='max-h-[400px] min-h-[200px] flex flex-col gap-5 overflow-auto mb-8'>
                                     {
-                                        singleData.comments.map((comment: { _id: string, comment: string, user: TUser[], timestamp: Date; }) => (
-                                            <div key={comment._id} className='border border-stone-200 rounded-2xl p-5'>
+                                        singleData.comments?.map((comment: { _id: string, comment: string, user: TUser[], timestamp: Date; }) => (
+                                            Object.values(comment).length > 2 ? <div key={comment._id} className='border border-stone-200 rounded-2xl p-5'>
                                                 <div className='flex gap-4 items-center'>
                                                     <Image src={comment.user[0].photoURL} onError={(e) => e.currentTarget.src = 'https://cdn-icons-png.flaticon.com/128/4140/4140048.png'} width={50} height={50} />
                                                     <div className='flex flex-col gap-2'>
@@ -105,7 +113,7 @@ const AllCommunityPosts = () => {
                                                     />
 
                                                 </div>
-                                            </div>
+                                            </div> : null
                                         ))
                                     }
                                     <div ref={scrollRef} />
@@ -118,11 +126,7 @@ const AllCommunityPosts = () => {
 
 
                                 }} className='flex items-center gap-4'>
-                                    <Input name='comment' type="text" placeholder='Write your comment' onKeyUp={(e) => {
-                                        if (e.key === 'Enter') {
-                                            buttonRef.current?.click();
-                                        }
-                                    }} />
+                                    <Input name='comment' type="text" placeholder='Write your comment' />
                                     <Button ref={buttonRef} colorScheme='whatsapp' type='submit'>Comment</Button>
                                 </form>
                             </div> </> : null}
