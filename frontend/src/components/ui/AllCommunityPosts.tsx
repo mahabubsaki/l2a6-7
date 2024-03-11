@@ -1,23 +1,58 @@
 
 import { Button, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
-import { TUser } from '../../redux/features/auth/authSlice';
-import { useGetAllComunityQuery, useGetSingleCommunityQuery } from '../../redux/features/community/communityAPI';
+import { TUser, selectCurrentUser } from '../../redux/features/auth/authSlice';
+import { useGetAllComunityQuery, useGetSingleCommunityQuery, usePostCommentMutation } from '../../redux/features/community/communityAPI';
 import { formatRelative } from 'date-fns';
 import LiveTimer from './LiveTimer';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { toast } from 'sonner';
+import { useAppSelector } from '../../redux/store/hooks';
 
 const AllCommunityPosts = () => {
+    let timeout1: number | undefined, timeout2: number | undefined;
     const [id, setId] = useState('');
-    const { data, isError, isLoading } = useGetAllComunityQuery([]);
-    const { data: singleData = null, isLoading: singleDataLoading, isError: singleDataData } = useGetSingleCommunityQuery(id, { skip: !id });
-    console.log(singleData);
+    const { data, isError, isLoading, refetch } = useGetAllComunityQuery([]);
+    const user = useAppSelector(selectCurrentUser);
+    const { data: singleData = null, isLoading: singleDataLoading, isError: singleDataData, refetch: refetchSingle } = useGetSingleCommunityQuery(id, { skip: !id });
+    const [postComment] = usePostCommentMutation();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const buttonRef = useRef<HTMLButtonElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const formRef = useRef<HTMLFormElement>(null);
+    const commentref = useRef<HTMLDivElement>(null);
 
     const handleComment = (value: string) => {
-        console.log(value);
-    };
+        if (!value) {
+            return toast.error('Please fill the comment field');
+        }
+        toast.promise(postComment({ comment: value, community: id, user: user?._id }).unwrap(), {
+            loading: 'Posting...',
+            success: () => {
 
+                refetch();
+                refetchSingle();
+
+
+                return 'Posted';
+            },
+            error: (err) => {
+                return err.status;
+            },
+            finally: () => {
+
+                timeout1 = setTimeout(() => {
+                    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+                    formRef.current?.reset();
+                }, 100);
+            }
+        });
+    };
+    useEffect(() => {
+        return () => {
+            clearTimeout(timeout1);
+            clearTimeout(timeout2);
+        };
+    }, []);
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -50,16 +85,37 @@ const AllCommunityPosts = () => {
 
                             </div>
                             <div>
-                                <h1 className='text-xl font-bold'>Comments</h1>
+                                <h1 className='text-xl font-bold mb-4'>Comments</h1>
 
-                                <div className='max-h-[400px] min-h-[200px] overflow-auto'>
+                                <div ref={commentref} className='max-h-[400px] min-h-[200px] flex flex-col gap-5 overflow-auto mb-8'>
+                                    {
+                                        singleData.comments.map((comment: { _id: string, comment: string, user: TUser[], timestamp: Date; }) => (
+                                            <div key={comment._id} className='border border-stone-200 rounded-2xl p-5'>
+                                                <div className='flex gap-4 items-center'>
+                                                    <Image src={comment.user[0].photoURL} width={50} height={50} />
+                                                    <div className='flex flex-col gap-2'>
+                                                        <p className='text-lg font-bold'>{comment.user[0].name}</p>
+                                                        <p className='text-xs'>Commented <LiveTimer time={comment.timestamp} /></p>
+                                                    </div>
 
+                                                </div>
+                                                <div className='my-8'>
+                                                    <p
+                                                        dangerouslySetInnerHTML={{ __html: comment.comment }}
+                                                    />
+
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                    <div ref={scrollRef} />
                                 </div>
-                                <form onSubmit={(e) => {
+                                <form ref={formRef} onSubmit={(e) => {
                                     e.preventDefault();
 
 
                                     handleComment(e.target.comment.value);
+
 
                                 }} className='flex items-center gap-4'>
                                     <Input name='comment' type="text" placeholder='Write your comment' onKeyUp={(e) => {
@@ -81,7 +137,7 @@ const AllCommunityPosts = () => {
                 </ModalContent>
             </Modal>
 
-            {data?.map((post: { _id: string, title: string, content: string; user: TUser; timestamp: Date; }) => (
+            {data?.map((post: { _id: string, title: string, content: string; user: TUser; timestamp: Date; comments: unknown[]; }) => (
                 <div key={post._id} className='border border-stone-200 rounded-2xl p-5'>
                     <div className='flex justify-between items-center p-4'>
                         <div className='flex gap-4 items-center'>
@@ -104,10 +160,16 @@ const AllCommunityPosts = () => {
                             <p dangerouslySetInnerHTML={{ __html: post.content }} />
                         </div>
                     </div>
-                    <div className='flex justify-end'>
+                    <div className='flex justify-end items-center gap-4'>
+                        <p className='text-xs'>{post.comments.length} comments</p>
                         <Button onClick={() => {
                             onOpen();
+
                             setId(post._id);
+                            timeout2 = setTimeout(() => {
+                                scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+                                formRef.current?.reset();
+                            }, 100);
                         }} colorScheme='whatsapp'>Comment Now!</Button>
                     </div>
                 </div>

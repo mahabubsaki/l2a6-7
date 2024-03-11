@@ -9,12 +9,14 @@ const communityApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body: communityInfo,
             }),
+            invalidatesTags: ['Community'],
         }),
         getAllComunity: builder.query({
             query: () => ({
                 url: '/api/v1/community-all',
                 method: 'GET',
             }),
+            providesTags: ['Community'],
         }),
         getSingleCommunity: builder.query({
             query: (id) => ({
@@ -22,8 +24,15 @@ const communityApi = baseApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        postComment: builder.mutation({
+            query: (comment) => ({
+                url: '/api/v1/create-comment',
+                method: 'POST',
+                body: comment,
+            }),
+        }),
 
     }),
 });
 
-export const { useCreateCommunityMutation, useGetAllComunityQuery, useGetSingleCommunityQuery } = communityApi;
+export const { useCreateCommunityMutation, useGetAllComunityQuery, useGetSingleCommunityQuery, usePostCommentMutation } = communityApi;
