@@ -29,6 +29,8 @@ async function run() {
         const communityCollection = db.collection('community');
         const commentCollection = db.collection('comments');
         const donationCollection = db.collection('donations');
+        const testimonialCollection = db.collection('testimonials');
+        const volunteerCollection = db.collection('volunteers');
 
         // User Registration
         app.post('/api/v1/register', async (req, res) => {
@@ -91,6 +93,24 @@ async function run() {
             try {
                 await communityCollection.insertOne({ ...req.body, user: new ObjectId(req.body.user), timestamp: new Date() });
                 res.send({ success: true, message: "Community created successfully" });
+            }
+            catch (e) {
+                res.status(400).send({ message: "Unknown Error" });
+            }
+        }
+        );
+
+        // Get all testimonials
+        app.get('/api/v1/testimonials', async (req, res) => {
+            const testimonials = await testimonialCollection.find({}).toArray();
+            res.send(testimonials);
+        });
+
+        // Create testimonial
+        app.post('/api/v1/create-testimonial', async (req, res) => {
+            try {
+                await testimonialCollection.insertOne({ ...req.body });
+                res.send({ success: true, message: "Testimonial created successfully" });
             }
             catch (e) {
                 res.status(400).send({ message: "Unknown Error" });
@@ -188,10 +208,10 @@ async function run() {
                         }
                     },
                     {
-                        $unwind: '$user'
+                        $unwind: { path: '$user', preserveNullAndEmptyArrays: true }
                     },
                     {
-                        $unwind: '$comments'
+                        $unwind: { path: '$comments', preserveNullAndEmptyArrays: true }
                     },
                     {
                         $lookup: {
@@ -236,10 +256,13 @@ async function run() {
                     }
                 ]).toArray();
 
+                console.log(community);
+
 
                 res.send(community[0]);
             }
             catch (e) {
+                console.log(e);
                 res.status(400).send({ message: "Invalid id" });
             }
         });
@@ -256,11 +279,42 @@ async function run() {
         }
         );
 
+
+        // post a volunteer
+
+        app.post('/api/v1/create-volunteer', async (req, res) => {
+
+            try {
+                const user = await volunteerCollection.findOne({ email: req.body.email });
+                if (user) {
+                    return res.status(400).json({
+                        success: false,
+                        message: 'User already exists'
+                    });
+                }
+                await volunteerCollection.insertOne({ ...req.body, user: new ObjectId(req.body.user), timestamp: new Date() });
+                res.send({ success: true, message: "Volunteer created successfully" });
+            }
+            catch (e) {
+                res.status(400).send({ message: "Unknown Error" });
+            }
+        }
+        );
+
+
+        // get all volunteers
+
+        app.get('/api/v1/volunteers', async (req, res) => {
+
+            const volunteers = await volunteerCollection.find({}).toArray();
+            res.send(volunteers);
+        });
         // create donation
 
         app.post('/api/v1/create-donation', async (req, res) => {
 
             try {
+
                 await donationCollection.insertOne({ ...req.body, user: new ObjectId(req.body.user), timestamp: new Date() });
                 res.send({ success: true, message: "Donation created successfully" });
             }
