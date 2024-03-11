@@ -7,7 +7,11 @@ import LiveTimer from './LiveTimer';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { useAppSelector } from '../../redux/store/hooks';
+interface X extends EventTarget {
+    comment: { value: string; },
 
+
+}
 const AllCommunityPosts = () => {
     let timeout1: number | undefined, timeout2: number | undefined;
     const [id, setId] = useState('');
@@ -60,6 +64,7 @@ const AllCommunityPosts = () => {
             clearTimeout(timeout1);
             clearTimeout(timeout2);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     if (isLoading) {
         return <div>Loading...</div>;
@@ -122,7 +127,7 @@ const AllCommunityPosts = () => {
                                     e.preventDefault();
 
 
-                                    handleComment(e.target.comment.value);
+                                    handleComment((e.target as X).comment.value);
 
 
                                 }} className='flex items-center gap-4'>

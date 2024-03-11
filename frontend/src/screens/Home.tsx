@@ -35,6 +35,7 @@ const Home = () => {
         if (isSuccess) {
             dispatch(setUser({ user: data as TUser, token: user?.token as string }));
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSuccess]);
 
     return (

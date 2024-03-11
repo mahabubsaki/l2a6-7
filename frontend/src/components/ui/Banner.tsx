@@ -131,6 +131,7 @@ const ShuffleGrid = () => {
         shuffleSquares();
 
         return () => clearTimeout(timeoutRef.current);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const shuffleSquares = () => {

@@ -14,6 +14,8 @@ import Notfound from "../screens/404";
 import Community from "../screens/Community";
 import Leaderboard from "../screens/Leaderboard";
 import CreateTestimonial from "../screens/CreateTestimonial";
+import Volunteer from "../screens/Volunteer";
+import AboutUs from "../screens/AboutUs";
 
 const routes = createBrowserRouter([{
     path: '/',
@@ -48,8 +50,17 @@ const routes = createBrowserRouter([{
         {
             path: '/leaderboard',
             element: <Leaderboard />
+        },
+        {
+            path: '/volunteer',
+            element: <RequireAuth> <Volunteer /></RequireAuth>
         }
+        ,
 
+        {
+            path: '/about-us',
+            element: <AboutUs />
+        }
     ]
 },
 {

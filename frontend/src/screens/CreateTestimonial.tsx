@@ -4,6 +4,13 @@ import { selectCurrentUser } from "../redux/features/auth/authSlice";
 import { usePostTestimonialMutation } from "../redux/features/testimonial/testimonialAPI";
 import { toast } from "sonner";
 
+interface X extends EventTarget {
+    designation: { value: string; },
+    feedback: { value: string; };
+    reset: () => void;
+
+}
+
 const CreateTestimonial = () => {
     const user = useAppSelector(selectCurrentUser);
     const [postTestimonial] = usePostTestimonialMutation();
@@ -13,8 +20,8 @@ const CreateTestimonial = () => {
             <div>
                 <form onSubmit={(e) => {
                     e.preventDefault();
-                    if (e.target.feedback.value > 180 || e.target.designation.value > 20) return toast.error('Designation should be less than 20 characters and feedback should be less than 180 characters');
-                    toast.promise(postTestimonial({ position: e.target.designation.value, review: e.target.feedback.value, name: user?.name, img: user?.photoURL }).unwrap(), {
+                    if ((e.target as X).feedback.value.length > 180 || (e.target as X).designation.value.length > 20) return toast.error('Designation should be less than 20 characters and feedback should be less than 180 characters');
+                    toast.promise(postTestimonial({ position: (e.target as X).designation.value, review: (e.target as X).feedback.value, name: user?.name, img: user?.photoURL }).unwrap(), {
                         loading: 'Posting...',
                         success: () => {
                             return 'Posted';
@@ -23,7 +30,7 @@ const CreateTestimonial = () => {
                             return err.status;
                         },
                         finally: () => {
-                            e.target.reset();
+                            (e.target as X).reset();
                         }
                     });
                 }} className="max-w-lg mx-auto">

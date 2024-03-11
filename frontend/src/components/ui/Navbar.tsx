@@ -101,11 +101,13 @@ const MainNav = () => {
     const dispatch = useAppDispatch();
     return (
         <div className='py-6 bg-[#262F36] border-b-4 border-main '>
-            <ul className='max-w-screen-xl mx-auto flex items-center flex-col sm:flex-row justify-center gap-8 uppercase'>
+            <ul className='max-w-screen-xl mx-auto flex items-center sm:flex-wrap flex-col sm:flex-row justify-center gap-8 text-sm uppercase px-8'>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/'}>HOME</Link></li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/relief-goods'}>Relief Goods</Link></li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/leaderboard'}>Leaderboard</Link></li>
                 <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/community'}>Community</Link></li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/about-us'}>About US</Link></li>
+                <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/volunteer'}>Volunteer</Link></li>
                 {user ? <>     <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/dashboard'}>
                     Dashboard</Link></li>
                     <button onClick={() => {
