@@ -1,6 +1,6 @@
 <!-- Please update value in the {}  -->
 
-# AidPulse - A Relief goods management
+# AidPulse - A Relief Goods Management
 
 <!-- TABLE OF CONTENTS -->
 
@@ -8,7 +8,8 @@
 
 - [Overview](#overview)
 - [Built With](#built-with)
-- [Features and sections](#features)
+- [Features and Sections](#features-and-sections)
+- [Getting Started](#getting-started)
 - [Contact](#contact)
 
 <!-- OVERVIEW -->
@@ -23,17 +24,17 @@ In times of crisis and disaster, swift and coordinated responses are crucial to 
 
 ### Built With
 
-<!-- This section should list any major frameworks and tools that you built your project using. Here are a few examples.-->
+<!-- This section should list any major frameworks and tools that you built your project using. Here are a few examples. -->
 
 - **Frontend:**
 
   - TypeScript
   - React.js
-  - Tailwind for manage styling
+  - Tailwind for managing styling
   - Framer Motion for elegant animations
-  - Redux for efficient data fetching and cachin
-  - React Hook Form for manage inputs
-  - react-slick-carousal
+  - Redux for efficient data fetching and caching
+  - React Hook Form for managing inputs
+  - react-slick-carousel
   - Vercel for hosting and deployment
 
 - **Backend:**
@@ -41,7 +42,7 @@ In times of crisis and disaster, swift and coordinated responses are crucial to 
   - MongoDB for flexible and scalable data storage
   - Node.js as the runtime environment
 
-## Features and sections
+## Features and Sections
 
 ### 1. Navbar:
 
@@ -53,11 +54,11 @@ In times of crisis and disaster, swift and coordinated responses are crucial to 
 
 ### 3. Relief Supply Posts:
 
-- 6 Releif Supply Posts displayed in card format, providing a information about of each supply.
+- 6 Relief Supply Posts displayed in card format, providing information about each supply.
 
 ### 4. View All Button:
 
-- Allows users to access the All Relief Supplies Page, displaying a comprehensive list of supply posts
+- Allows users to access the All Relief Supplies Page, displaying a comprehensive list of supply posts.
 
 ### 5. Testimonials:
 
@@ -73,51 +74,78 @@ In times of crisis and disaster, swift and coordinated responses are crucial to 
 
 ### 8. Our Statistics:
 
-- An informative section providing a statistics of our success.
+- An informative section providing statistics of our success.
 
 ### 9. FAQ:
 
-- An informative section where all frequently asked question placed
+- An informative section where all frequently asked questions are placed.
 
-### 11. All Relief Supplies Page:
+### 10. All Relief Supplies Page:
 
-    - Organized grid layout presenting relief supply posts
+- Organized grid layout presenting relief supply posts.
 
-### 12. Relief Supply Detail Page:
+### 11. Relief Supply Detail Page:
 
-    - Detailed presentation of a relief supply post
+- Detailed presentation of a relief supply post.
 
-### 13. Login :
+### 12. Login:
 
-    - User-friendly login form enabling users to access their account with essential information
+- User-friendly login form enabling users to access their account with essential information.
 
-### 13. Register :
+### 13. Register:
 
-    - User-friendly registration form enabling users to create new accounts with essential information
+- User-friendly registration form enabling users to create new accounts with essential information.
 
-#### Dashboard(Protected):
+### Dashboard (Protected):
 
-### Dashboard Home:
+#### Dashboard Home:
 
 - Providing information about Relief supplies with Bar charts.
 
-### All Relief Supply Posts Page:
+#### All Relief Supply Posts Page:
 
-- A comprehensive view of all relief supply posts in a table format with delete and update button.
+- A comprehensive view of all relief supply posts in a table format with delete and update buttons.
 
-### Create Relief Supply Post Page:
+#### Create Relief Supply Post Page:
 
-- Interactive form allowing users to create new relief supply post.
+- Interactive form allowing users to create new relief supply posts.
+
+### Additional Features:
+
+#### Dynamic Theme Switching:
+
+- Enable users to switch between different themes (e.g., light mode, dark mode) based on their preferences.
+
+#### Donors Leaderboard: ("/leaderboard")
+
+- Develop a leaderboard to showcase the top donors who have made significant contributions to the relief efforts.
+- Display donor names or usernames along with their donation amounts to recognize their generosity.
+
+#### Community Gratitude Wall: ("/community")
+
+- Create a community gratitude wall where users can post comments of appreciation for the support they've received during difficult times.
+- Allow users to post comments expressing their gratitude.
+
+#### Interactive Testimonial: ("/dashboard/create-testimonial")
+
+- Donors will be able to post testimonials about the donation posts.
+
+#### Digital Volunteer Hub: ("/volunteer")
+
+- Develop a digital hub where users can discover and sign up for virtual volunteer opportunities.
+- Create a form where users can provide their information like their email, phone number, location, etc.
+- Show the volunteer lists on the About Us page in a section named Our Volunteers ("/about-us").
 
 ## Getting Started
 
 ### 1. Clone the repository:
 
-- git clone https://github.com/Porgramming-Hero-web-course/l2-b2-assignment-6-fronten-mahabubsaki.git
+- git clone https://github.com/mahabubsaki/l2a6-7
 
 ### 2. Install dependencies:
 
-- cd l2-b2-assignment-6-fronten-mahabubsaki
+- cd l2a6-7
+- cd frontend
 - npm install
 
 ### 3. Start the site:
