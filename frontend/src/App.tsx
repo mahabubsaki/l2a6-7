@@ -16,7 +16,7 @@ const App = () => {
       <footer>
         <Footer />
       </footer>
-      <Toaster duration={1000} richColors position="top-center" visibleToasts={1} />
+      <Toaster duration={3000} richColors position="top-center" visibleToasts={1} />
     </Fragment>
   );
 };

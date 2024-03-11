@@ -1,7 +1,41 @@
+import { Input } from "@chakra-ui/react";
 import MdTextEditor from "../components/ui/MdTextEditor";
+import { useRef } from "react";
+import ReactQuill from "react-quill";
+import { toast } from "sonner";
+import { useCreateCommunityMutation } from "../redux/features/community/communityAPI";
+import { useAppSelector } from "../redux/store/hooks";
+import { selectCurrentUser } from "../redux/features/auth/authSlice";
 
 
 const Community = () => {
+    const ref = useRef<ReactQuill>(null);
+    const ref2 = useRef<HTMLInputElement>(null);
+    const user = useAppSelector(selectCurrentUser);
+
+
+    const [post] = useCreateCommunityMutation();
+
+    const handleBlog = () => {
+        const title = ref2.current?.value;
+        const content = ref.current?.value;
+        if (!title || !content) {
+            return toast.error('Please fill all the fields');
+        }
+        toast.promise(post({ title, content, user: user?._id as string }).unwrap(), {
+            loading: 'Posting...',
+            success: () => {
+                ref2.current!.value = "";
+                ref.current?.editor?.setText('');
+                ref.current!.value = "";
+                return 'Posted';
+            },
+            error: (err) => {
+                return err.status;
+            }
+
+        });
+    };
     return (
         <div className="max-w-screen-xl mx-auto">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">Community</h1>
@@ -16,7 +50,11 @@ const Community = () => {
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-2">Create a post</h2>
 
-            <MdTextEditor />
+            <div>
+                <Input ref={ref2} type="text" placeholder="Write your title" />
+                <h3 className="text-lg font-semibold text-gray-800 mt-4 mb-2">Write your message</h3>
+                <MdTextEditor handleBlog={handleBlog} editorRef={ref} />
+            </div>
         </div>
     );
 };

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
 import { TUser, selectCurrentUser, setUser } from "../redux/features/auth/authSlice";
 const Login = () => {
     const [credentials, setCredentials] = useState({ email: '', password: '' } as { email: string, password: string; });
-    const [login] = useLoginMutation();
+    const [login, { isLoading }] = useLoginMutation();
     const dispatch = useAppDispatch();
 
     const user = useAppSelector(selectCurrentUser);
@@ -40,7 +40,7 @@ const Login = () => {
                         <input autoComplete="off" required onChange={(e) => setCredentials(pre => ({ ...pre, password: e.target.value }))} type="password" id="password" placeholder="Your Password" className='w-full   border-[#c9c9c9] mt-2 text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px] outline-none focus:outline-none duration-300 px-5' />
                     </div>
                     <div>
-                        <button className="bg-main border-2 my-4 text-white py-2.5 hover:bg-transparent hover:text-main duration-300 px-5 rounded-md hover:border-main border-white">Login</button>
+                        <button disabled={isLoading} className="bg-main disabled:bg-gray-400  border-2 my-4 text-white py-2.5 hover:bg-transparent hover:text-main duration-300 px-5 rounded-md hover:border-main border-white">Login</button>
                     </div>
                 </form>
                 <p>Don't have an account? <span className="text-main font-semibold"><Link to={'/register'}>REGISTER</Link></span> now</p>

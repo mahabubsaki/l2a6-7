@@ -3,9 +3,10 @@ import { RootState } from '../../store';
 
 
 export type TUser = {
-    userId: string;
+    _id: string;
     email: string;
     name: string;
+    photoURL: string;
     token: string;
 };
 

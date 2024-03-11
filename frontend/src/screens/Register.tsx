@@ -7,7 +7,7 @@ import { TUser, selectCurrentUser, setUser } from "../redux/features/auth/authSl
 
 
 const Register = () => {
-    const [credentials, setCredentials] = useState({ email: '', password: '', name: '' } as { email: string, password: string; name: string; });
+    const [credentials, setCredentials] = useState({ email: '', password: '', name: '', photoURL: "" } as { email: string, password: string; name: string; photoURL: string; });
     const [register] = useRegisterMutation();
     const dispatch = useAppDispatch();
 
@@ -35,6 +35,10 @@ const Register = () => {
                     <div>
                         <label htmlFor="name" className="text-main ">Name</label>
                         <input autoComplete="off" onChange={(e) => { setCredentials(pre => ({ ...pre, name: e.target.value })); }} type="text" id="name" placeholder="Your Name" className='w-full   border-[#c9c9c9] mt-2 text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px] outline-none focus:outline-none duration-300 px-5' />
+                    </div>
+                    <div>
+                        <label htmlFor="photo" className="text-main ">Photo URL</label>
+                        <input autoComplete="off" onChange={(e) => { setCredentials(pre => ({ ...pre, photoURL: e.target.value })); }} type="url" id="photo" placeholder="Your Photo" className='w-full   border-[#c9c9c9] mt-2 text-[#c9c9c9] bg-[#2C353C] text-[14px] py-2 h-[50px] outline-none focus:outline-none duration-300 px-5' />
                     </div>
                     <div>
                         <label htmlFor="email" className="text-main ">Email</label>

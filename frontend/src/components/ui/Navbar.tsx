@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/store/hooks';
 import { selectCurrentUser, setUser } from '../../redux/features/auth/authSlice';
 import { toast } from 'sonner';
+import { Tooltip } from '@chakra-ui/react';
 
 const Navbar = () => {
     return (
@@ -110,6 +111,12 @@ const MainNav = () => {
                         dispatch(setUser({ user: null, token: '' }));
                         toast.success('Logout Success');
                     }} className='bg-main border-main border text-white px-6 py-2.5 rounded-full hover:bg-transparent font-semibold  hover:text-main duration-300'>Logout</button>
+                    <Tooltip label={user.name} aria-label='USER-NAME-TOOLTIP' >
+                        <div className='size-[50px] rounded-full cursor-pointer'>
+                            <img src={user.photoURL} onError={(e) => e.currentTarget.src = 'https://cdn-icons-png.flaticon.com/128/4140/4140048.png'} className='w-full h-full' />
+                        </div>
+                    </Tooltip>
+
                 </> : <li className='text-white font-semibold hover:text-main cursor-pointer duration-300'><Link to={'/login'}>
                     Login</Link></li>}
             </ul>
