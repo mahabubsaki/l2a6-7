@@ -28,6 +28,7 @@ async function run() {
         const reliefCollection = db.collection('relief');
         const communityCollection = db.collection('community');
         const commentCollection = db.collection('comments');
+        const donationCollection = db.collection('donations');
 
         // User Registration
         app.post('/api/v1/register', async (req, res) => {
@@ -53,7 +54,7 @@ async function run() {
             res.status(201).json({
                 success: true,
                 message: 'User registered successfully',
-                user: { name, email, id: insertedId, photoURL },
+                user: { name, email, _id: insertedId, photoURL },
                 token
             });
         });
@@ -80,7 +81,7 @@ async function run() {
             res.json({
                 success: true,
                 message: 'Login successful',
-                user: { name: user.name, email: user.email, id: user._id, photoURL: user.photoURL },
+                user: { name: user.name, email: user.email, _id: user._id, photoURL: user.photoURL },
                 token
             });
         });
@@ -254,6 +255,56 @@ async function run() {
             }
         }
         );
+
+        // create donation
+
+        app.post('/api/v1/create-donation', async (req, res) => {
+
+            try {
+                await donationCollection.insertOne({ ...req.body, user: new ObjectId(req.body.user), timestamp: new Date() });
+                res.send({ success: true, message: "Donation created successfully" });
+            }
+            catch (e) {
+                res.status(400).send({ message: "Unknown Error" });
+            }
+        }
+        );
+
+        // get donation leaderboard
+
+        app.get('/api/v1/donation-leaderboard', async (req, res) => {
+            const donation = await donationCollection.aggregate([
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'user',
+                        foreignField: '_id',
+                        as: 'user'
+                    }
+                },
+                {
+                    $unwind: '$user'
+                },
+                {
+                    $group: {
+                        _id: '$user._id',
+                        name: { $first: '$user.name' },
+                        email: { $first: '$user.email' },
+                        photoURL: { $first: '$user.photoURL' },
+                        totalAmount: { $sum: '$quantity' }
+                    }
+                },
+                {
+                    $sort: { totalAmount: -1 }
+                },
+                {
+                    $limit: 10
+                }
+            ]).toArray();
+
+            res.send(donation);
+        });
+
 
         // ==============================================================
         // WRITE YOUR CODE HERE
