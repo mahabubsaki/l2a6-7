@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
 import { useAppSelector } from "../redux/store/hooks";
 import { selectCurrentUser } from "../redux/features/auth/authSlice";
 import { usePostVolunteerMutation } from "../redux/features/volunteer/volunteerAPI";
@@ -49,6 +49,10 @@ const Volunteer = () => {
                         <div>
                             <FormLabel>Address</FormLabel>
                             <Input name="address" type='text' placeholder="Your address" />
+                        </div>
+                        <div>
+                            <FormLabel>Message</FormLabel>
+                            <Textarea name="message" resize={'none'} height={'300px'} placeholder="Your message" />
                         </div>
                         <Button colorScheme="orange" type="submit">Join</Button>
                     </FormControl>
