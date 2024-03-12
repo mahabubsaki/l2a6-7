@@ -10,7 +10,7 @@ const App = () => {
       <nav>
         <Navbar />
       </nav>
-      <main className="my-4">
+      <main className="my-4 px-6 md:px-0">
         <Outlet />
       </main>
       <footer>

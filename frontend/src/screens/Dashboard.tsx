@@ -42,7 +42,7 @@ const Dashboard = () => {
 
                 </ul>
             </div >
-            <div className='md:col-span-10 col-span-12 mt-10'>
+            <div className='md:col-span-10 col-span-12 mt-10 px-6 md:px-0'>
                 <Outlet />
                 <Toaster duration={1000} richColors position="top-center" visibleToasts={1} />
             </div>
